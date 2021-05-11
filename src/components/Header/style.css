@@ -1,0 +1,18 @@
+.logo {
+    font-family: "Raleway", Sans-Serif;
+    font-size: 45px;
+    text-align: center;
+    color: #939597;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .logo:hover {
+    background-color: transparent;
+    color: #f5df4d;
+  }
+  .logo_container {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

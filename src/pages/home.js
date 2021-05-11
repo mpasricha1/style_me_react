@@ -7,9 +7,9 @@ import Footer from "../components/Footer";
 function Home() {
   return (
     <>
-      <Link to={"/home"}>
-        <h1>Style Me Home Page</h1>
+      <Link to={"/home"} style={{ textDecoration: 'none' }}>
         <Header />
+
         <Banner />
         <Footer />
       </Link>
