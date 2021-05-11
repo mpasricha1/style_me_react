@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "style_me_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Meg@deth6",
+    "database": "style_me_db_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
+}
