@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
+import Buttons from "../components/Buttons";
 import Footer from "../components/Footer";
 
 function Home() {
@@ -11,6 +12,7 @@ function Home() {
         <Header />
 
         <Banner />
+        <Buttons />
         <Footer />
       </Link>
     </>

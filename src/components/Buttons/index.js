@@ -4,7 +4,7 @@ import "./style.css";
 function Buttons() {
   return (
     <>
-        <h1>Buttons</h1>
+        <h1>Create Buttons components</h1>
     </>
   );
 }
