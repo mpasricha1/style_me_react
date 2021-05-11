@@ -4,7 +4,7 @@ import "./style.css";
 function Header() {
   return (
     <>
-        <p>Create Header here</p>
+      <header className="logo logo_container">Style Me</header>
     </>
   );
 }
