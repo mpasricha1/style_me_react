@@ -4,7 +4,13 @@ import "./style.css";
 function Footer() {
   return (
     <>
-        <p>Create footer here</p>
+      <footer className="py-4 bg-dark flex-bottom">
+        <div className="container">
+          <p className="m-0 text-center text-white">
+            Copyright &copy; 2021
+          </p>
+        </div>
+      </footer>
     </>
   );
 }
