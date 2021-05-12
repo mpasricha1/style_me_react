@@ -1,3 +1,4 @@
+// THIS IS AN OPTIONAL COMPONENT...DON'T HAVE TO USE IF YOU DONT WANT TO
 import React, { Component } from "react";
 import "./style.css";
 import BuildOutfitImg from "../../images/BuildOutfit.png";

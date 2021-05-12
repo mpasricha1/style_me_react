@@ -6,6 +6,7 @@ import Signup from "./pages/signup";
 import BuildOutfit from "./pages/build_outfit";
 import Catalogs from "./pages/catalogs";
 import NewItem from "./pages/new_item";
+import Social from "./pages/social";
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route exact path={["/newitem"]}>
           <NewItem />
+        </Route>
+        <Route exact path={["/social"]}>
+          <Social />
         </Route>
         </Switch>
       </Router>
