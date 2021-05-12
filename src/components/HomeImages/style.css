@@ -1,0 +1,19 @@
+.landingImages {
+    width: 100%; 
+    height: auto;
+  }
+  .landingTextRowGray{
+    padding: 20px;
+    background-color: #939597;
+    color: white;
+    
+  }
+  .landingTextRowYellow{
+    padding: 20px;
+    background-color:#f5df4d;
+  
+  }
+  .landingText {
+    padding: 40px;
+    text-align: left;
+  }
