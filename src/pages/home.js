@@ -11,7 +11,6 @@ function Home() {
     <>
       <Link to={"/home"} style={{ textDecoration: 'none' }}>
         <Header />
-
         <Banner />
         <Buttons />
         <HomeImages />

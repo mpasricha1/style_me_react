@@ -1,4 +1,3 @@
-// THIS CONTAINS THE LOGIN AND SIGNUP BUTTONS FOUND IN THE HOME PAGE
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
