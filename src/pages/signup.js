@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import SignUpimg from "../components/signUpimg";
 
 function Signup() {
   return (
     <>
-      <Link to={"/signup"}>
-        <h1>Signup Page</h1>
+      <Link to={"/signup"}style={{textDecoration:"none"}}>
+        <Header/>
+        <SignUpimg/>
       </Link>
     </>
   );
