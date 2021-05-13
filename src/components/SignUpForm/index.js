@@ -1,10 +1,11 @@
 import React from "react";
 import "./style.css";
 
+
 function Signup() {
   return (
     <>
-        <p>Create signup from here</p>
+     <h1>Signup Form</h1>  
     </>
   );
 }
