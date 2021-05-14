@@ -10,8 +10,11 @@ import Footer from "../components/Footer";
 function Login() {
   return (
     <>
+
       <Link to={"/login"} >
       </Link>
+
+   
       <Header />
       <SignUpimg/>
       <ButtonsLogin />
