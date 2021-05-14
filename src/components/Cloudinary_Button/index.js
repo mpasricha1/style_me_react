@@ -1,14 +1,14 @@
 import React from "react";
+import "./style.css";
 
-function Cloudinary_Button() {
+function Cloudinary_Button(props) {
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          {/* <!-- Cloudinary button for uploading or adding a new photo --> */}
-          <button id="upload_widget" class="btn" style={{borderStyle: "solid", borderColor: "black"}}>
-            Add an Item
-          </button>
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-12">
+          <button {...props} className="upload_widget">
+            {props.children}
+            </button>
         </div>
       </div>
     </div>
