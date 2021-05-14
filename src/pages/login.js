@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-//image component
+import SignUpimg from "../components/signUpimg";
 import Buttons from "../components/Buttons";
 import Footer from "../components/Footer";
 
@@ -12,10 +12,7 @@ function Login() {
     <>
       <Link to={"/login"}>
       <Header />
-
-      {/* image component */}
-
-      <h1>Login Page</h1>
+      <SignUpimg/>
       <Buttons />
       <Footer />
       </Link>
