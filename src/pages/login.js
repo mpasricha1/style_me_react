@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 function Login() {
   return (
     <>
-      <Link to={"/login"}>
+      <Link to={"/login"} style={{ textDecoration: "none"}}>
       <Header />
       <SignUpimg/>
       <Buttons />
