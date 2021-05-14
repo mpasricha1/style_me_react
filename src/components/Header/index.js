@@ -1,10 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Header() {
   return (
     <>
-      <header className="logo logo_container">Style Me</header>
+
+        <Link
+          to="/home"
+          className="logo logo_container"
+          
+        >
+          Style Me
+        </Link>
+      
     </>
   );
 }

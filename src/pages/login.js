@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SignUpimg from "../components/signUpimg";
-import Buttons from "../components/Buttons";
+import ButtonsLogin from "../components/ButtonsLogin";
 import Footer from "../components/Footer";
 
 
@@ -10,12 +10,12 @@ import Footer from "../components/Footer";
 function Login() {
   return (
     <>
-      <Link to={"/login"}>
+      <Link to={"/login"} >
+      </Link>
       <Header />
       <SignUpimg/>
-      <Buttons />
+      <ButtonsLogin />
       <Footer />
-      </Link>
     </>
   );
 }
