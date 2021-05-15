@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
+import { Input, LabelForInput } from "../components/InputFields";
 import Footer from "../components/Footer";
 import { CloudinaryContext, Image } from "cloudinary-react";
 import { fetchPhotos, openUploadWidget } from "../utils/CloudinaryService";
@@ -60,6 +61,16 @@ function New_item() {
                 />
               ))}
             </section>
+            <Input
+            // onChange={handleInputChange}
+            id="item_name"
+            name="Item Name"
+            placeholder="Item Name"
+           />
+           <LabelForInput
+           htmlFor="item_name"
+           />
+            
             <Footer />
           </div>
         </CloudinaryContext>
