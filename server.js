@@ -1,6 +1,6 @@
 const express = require('express');
 const session = require('express-session')
-// const routes = require('./routes'); 
+const routes = require('./routes'); 
 const app = express(); 
 const PORT = process.env.PORT || 4000;
 
@@ -14,7 +14,11 @@ app.use(session({ secret: process.env.SECRET_KEY, resave:true, saveUninitialized
 app.use(passport.initialize());  
 app.use(passport.session());
 
-// app.use(routes);
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+app.use(routes);
 
 db.sequelize.sync().then( () =>{
 	app.listen(PORT, () => {

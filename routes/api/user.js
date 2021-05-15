@@ -2,6 +2,10 @@ const router = require("express").Router();
 const db = require("../../models");
 const passport = require("../../config/passport") 
 
+router.get("/test", (req, res) => {
+    res.json(true);
+});
+
 router.post('/login', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
@@ -14,8 +18,8 @@ router.post('/login', function(req, res, next) {
 });
 
 router.get("/logout", (req, res ) =>{
-	req.logout();
-	res.redirect("/");
+	// req.logout();
+	// res.redirect("/");
 });
 
 router.get('/auth/google', 
