@@ -12,7 +12,7 @@ function Login() {
     <>
       <Link to={"/login"} style={{ textDecoration: "none" }}>
         <Header />
-        <Image src={GenericImage} alt="Style Me" />
+        <Image src={GenericImage} alt="Style Me" className="style_me_logo" />
 
         <LabelForInput htmlFor="first_name" />
 
