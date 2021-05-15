@@ -2,27 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function Buttons() {
+export function Buttons (props) {
   return (
-    <>
-<div className="landing_btn_container">
-  <Link
-    to="/login"
-    className="btn btn-outline-secondary loginBtn"
-    role="button"
-  >
-    Login
-  </Link>
-  <Link
-    to="/signup"
-    className="btn btn-outline-secondary signupBtn"
-    role="button"
-  >
-    Sign me up!
-  </Link>
-</div>
-    </>
+    <div className="landing_btn_container">
+      <Link
+        className="btn btn-outline-secondary"
+        role="button"
+        {...props}
+      />
+    </div>
   );
 }
 
-export default Buttons;
+
