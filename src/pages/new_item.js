@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
 import { Input, LabelForInput } from "../components/Form";
+import { ReusableBtn } from "../components/Buttons";
 import Footer from "../components/Footer";
 import { CloudinaryContext, Image } from "cloudinary-react";
 import { fetchPhotos, openUploadWidget } from "../utils/CloudinaryService";
@@ -46,7 +47,24 @@ function New_item() {
         <CloudinaryContext cloudName="dnx8v0ryu">
           <div className="App">
             <Header />
-            <CloudinaryButton onClick={() => beginUpload("image")}>
+            <div className="topButtons">
+              <ReusableBtn
+                to="/catalogs"
+                className="seeCatalogsBtn btn btn-outline-secondary"
+              >
+                See Catalogs
+              </ReusableBtn>
+              <ReusableBtn
+                to="/buildoutfit"
+                className="buildoutfitBtn btn btn-outline-secondary"
+              >
+                Build Outfit
+              </ReusableBtn>
+            </div>
+            <CloudinaryButton
+              onClick={() => beginUpload("image")}
+              className="upload_widget"
+            >
               Add New Item
             </CloudinaryButton>
             <ImagePlaceholder />
@@ -61,16 +79,24 @@ function New_item() {
                 />
               ))}
             </section>
-            <Input
-            // onChange={handleInputChange}
-            id="item_name"
-            name="Item Name"
-            placeholder="Item Name"
-           />
-           <LabelForInput
-           htmlFor="item_name"
-           />
-            
+            <div className="inputItemName">
+              <Input
+                // onChange={handleInputChange}
+                id="item_name"
+                className="itemName"
+                name="Item Name"
+                placeholder="Item Name"
+              />
+              <LabelForInput htmlFor="item_name" />
+            </div>
+            <ReusableBtn
+              id="addToCollection_Btn"
+              className="addToCollectionBtn reusableBtn"
+              type="submit"
+            >
+              Add To Collection
+            </ReusableBtn>
+
             <Footer />
           </div>
         </CloudinaryContext>

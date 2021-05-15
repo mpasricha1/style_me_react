@@ -2,16 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export function Buttons (props) {
+export function Buttons(props) {
   return (
     <div className="landing_btn_container">
-      <Link
-        className="btn btn-outline-secondary"
-        role="button"
-        {...props}
-      />
+      <Link className="btn btn-outline-secondary" role="button" {...props} />
     </div>
   );
 }
 
-
+export function ReusableBtn(props) {
+  return (
+    <div className="col-sm-8 reusableButton">
+      <button className="btn btn-outline-secondary reusableBtn" {...props} />
+    </div>
+  );
+}
