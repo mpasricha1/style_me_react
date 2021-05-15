@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
-import { Input, LabelForInput } from "../components/InputFields";
+import { Input, LabelForInput } from "../components/Form";
 import Footer from "../components/Footer";
 import { CloudinaryContext, Image } from "cloudinary-react";
 import { fetchPhotos, openUploadWidget } from "../utils/CloudinaryService";

@@ -1,10 +1,17 @@
 .btn {
-    width: 45%;
-    padding: 10px;
-    margin: 5px;
-    height: 45px;
+  width: 45%;
+  padding: 10px;
+  margin: 5px;
+  height: 45px;
 }
 
-.loginBtn, .signupBtn{
+.loginBtn,
+.signupBtn {
   padding-top: 10px !important;
+}
+
+.style_me_logo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
 }
