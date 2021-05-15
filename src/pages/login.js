@@ -27,12 +27,14 @@ function Login() {
           placeholder="Email"
           name="email"
           required=""/>
-        {/* <LabelForInput htmlFor = "Password"/>
-        <Input type="text"
+        <LabelForInput htmlFor = "Password"/>
+        <Input type="password"
           id="password"
+          className = "inputBox"
           placeholder="Password"
           name="password"
-          required=""/> */}
+          required=""/>
+          
       {/* <Buttons onClick="******">Login</Buttons> */}
       <Buttons>Login</Buttons>
       {/* <Buttons on click= "*****">Google</Buttons> */}
@@ -40,7 +42,7 @@ function Login() {
       {/* <Buttons to = "/home">Cancel</Buttons> */}
   
       
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
