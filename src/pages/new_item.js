@@ -25,9 +25,7 @@ function New_item() {
           setImages([...images, photos.info.public_id]);
           console.log("URL", photos.info.url);
           console.log("THUMBNAIL_URL", photos.info.thumbnail_url);
-          let prediction = API.getPrediction(
-          photos.info.url
-          );
+          let prediction = API.getPrediction(photos.info.url);
           console.log(prediction);
         }
       } else {
