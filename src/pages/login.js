@@ -1,34 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import { Image, Input, LabelForInput } from "../components/Form";
+//import SignUpimg from "../components/signUpimg";
+//import Buttons from "../components/Buttons";
+// import LoginForm from "../components/LoginForm"
+// import Label from "../components/Form"
+import {Input, LabelForInput, Image} from "../components/Form";
+import {Buttons} from "../components/Buttons";
 import GenericImage from "../images/styleMe.png";
-import { Buttons } from "../components/Buttons";
-// import ButtonsLogin from "../components/ButtonsLogin";
+// import { Button } from "bootstrap";
 import Footer from "../components/Footer";
+import "../styles/styles.css"
 
 function Login() {
   return (
     <>
-      <Link to={"/login"} style={{ textDecoration: "none" }}>
-        <Header />
-        <Image src={GenericImage} alt="Style Me" className="style_me_logo" />
 
-        <LabelForInput htmlFor="first_name" />
-
-        <Input
-          type="text"
-          id="first_name"
-          placeholder="First Name"
-          name="first_name"
-          required=""
-        />
-
-        <Buttons>Login</Buttons>
-        <Buttons>Google</Buttons>
-
-        <Footer />
+      <Link to={"/login"} >
       </Link>
+      <Header/>
+        <Image src ={GenericImage} alt= "Style Me" className= "style_me_logo"/>
+        <LabelForInput htmlFor = "email"/>
+        <Input type="text"
+          id="email"
+          className = "inputBox"
+          placeholder="Email"
+          name="email"
+          required=""/>
+        {/* <LabelForInput htmlFor = "Password"/>
+        <Input type="text"
+          id="password"
+          placeholder="Password"
+          name="password"
+          required=""/> */}
+      {/* <Buttons onClick="******">Login</Buttons> */}
+      <Buttons>Login</Buttons>
+      {/* <Buttons on click= "*****">Google</Buttons> */}
+      <Buttons>Google</Buttons>
+      {/* <Buttons to = "/home">Cancel</Buttons> */}
+  
+      
+      <Footer />
     </>
   );
 }
