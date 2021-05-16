@@ -75,7 +75,10 @@ function Catalogs() {
             <ImgTag src={TemplateImage} className="imgElement"/>
             </ListElement>
           </UnorderedList>
+        </ListContainer>
 
+        <ListContainer>
+          "outfits will be display here"
         </ListContainer>
         <Footer />
       </Link>
