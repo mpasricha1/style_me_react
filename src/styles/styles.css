@@ -1,13 +1,13 @@
 .btn {
-  width: 45%;
+  width: 29%;
   padding: 10px;
-  margin: 5px;
+  margin: 8px;
   height: 45px;
 }
 
 .loginBtn,
 .signupBtn {
-  padding-top: 10px !important;
+  padding: 10px !important;
 }
 
 .style_me_logo {
@@ -15,8 +15,9 @@
   margin-right: auto;
   width: 60%;
 }
-.whatever {
-  border-color: aqua;
+.inputBox {
+  width: 60%;
+  padding: 10px;
 }
 
 /* Add New Item styling */
