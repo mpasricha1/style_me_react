@@ -53,14 +53,14 @@
   justify-content: center;
 }
 
-.seeCatalogsBtn, .buildoutfitBtn {
+.seeCatalogsBtn, .buildoutfitBtn, .newItemBtn {
   width: 90%;
   height: 50px;
   margin-left: 5px;
   margin-right: 5px;
 }
 
-.seeCatalogsBtn:hover, .buildoutfitBtn:hover {
+.seeCatalogsBtn:hover, .buildoutfitBtn:hover, .newItemBtn {
   background-color: #939597;
   color: white;
 }
@@ -77,3 +77,26 @@
   margin-top: 20px;
 }
 /* ===================================== */
+.listContainer{
+  justify-content: center;
+  margin: 30px auto;
+}
+.ulElement{
+  margin-right: 27px;
+  margin-left: 3px;
+  list-style-type: none;
+  background-color: lightgray;
+  padding: 0;
+  width: 150px;
+  justify-content: center;
+  padding-bottom: 19px;
+  border-radius: 27px;
+}
+.liElement{
+  display: grid;
+}
+.imgElement{
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
