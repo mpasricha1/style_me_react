@@ -17,3 +17,7 @@
   background-color: #f5df4d;
   color: #6c757d;
 }
+
+.btn {
+  padding-top: 11px !important;
+}

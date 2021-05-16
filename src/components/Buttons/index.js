@@ -13,7 +13,7 @@ export function Buttons(props) {
 export function ReusableBtn(props) {
   return (
     <div className="col-sm-8 reusableButton">
-      <button className="btn btn-outline-secondary reusableBtn" {...props} />
+      <Link className="btn btn-outline-secondary reusableBtn" role="button" {...props} />
     </div>
   );
 }
