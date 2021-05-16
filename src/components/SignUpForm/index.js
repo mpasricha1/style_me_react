@@ -1,11 +1,11 @@
 import React from "react";
 import "./style.css";
-
+import Header from "../Header";
 
 function Signup() {
   return (
     <>
-     <h1>Signup Form</h1>  
+        <p>Create signup from here</p>
     </>
   );
 }
