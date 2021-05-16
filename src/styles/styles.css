@@ -1,8 +1,11 @@
 .btn {
   width: 29%;
   padding: 10px;
-  margin: 8px;
+  margin: 20px;
   height: 45px;
+}
+.btn:hover {
+  color: #f5df4d;
 }
 
 .loginBtn,
@@ -14,10 +17,21 @@
   margin-left: auto;
   margin-right: auto;
   width: 60%;
+  text-decoration: none;
+}
+.logo {
+  text-decoration: none;
 }
 .inputBox {
   width: 60%;
   padding: 10px;
+}
+/* .btn-outline-secondary:hover {
+  color: #f5df4d;
+} */
+.reusableBtn:hover {
+  background-color: #f5df4d;
+  color: #6c757d;
 }
 
 /* Add New Item styling */

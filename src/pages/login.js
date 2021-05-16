@@ -42,7 +42,7 @@ function Login() {
       {/* <Buttons to = "/home">Cancel</Buttons> */}
   
       
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
