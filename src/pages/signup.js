@@ -48,7 +48,7 @@ function Signup() {
 
       </Link>
   
-      {/* <Footer/>   */}
+      <Footer/>  
     </>
   );
 }

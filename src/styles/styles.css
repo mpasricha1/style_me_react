@@ -1,22 +1,37 @@
 .btn {
-  width: 45%;
+  width: 29%;
   padding: 10px;
-  margin: 5px;
+  margin: 20px;
   height: 45px;
+}
+.btn:hover {
+  color: #f5df4d;
 }
 
 .loginBtn,
 .signupBtn {
-  padding-top: 10px !important;
+  padding: 10px !important;
 }
 
 .style_me_logo {
   margin-left: auto;
   margin-right: auto;
   width: 60%;
+  text-decoration: none;
 }
-.whatever {
-  border-color: aqua;
+.logo {
+  text-decoration: none;
+}
+.inputBox {
+  width: 60%;
+  padding: 10px;
+}
+/* .btn-outline-secondary:hover {
+  color: #f5df4d;
+} */
+.reusableBtn:hover {
+  background-color: #f5df4d;
+  color: #6c757d;
 }
 
 /* Add New Item styling */
