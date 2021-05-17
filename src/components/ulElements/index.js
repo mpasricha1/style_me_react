@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 
 export function ListContainer(props) {
@@ -15,5 +14,5 @@ export function ListElement(props) {
   </li>;
 }
 export function ImgTag(props) {
-    return <img className="imgTag" {...props}/>;
+    return <img className="imgTag" alt="" {...props}/>;
   }
