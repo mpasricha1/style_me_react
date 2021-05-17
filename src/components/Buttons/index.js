@@ -5,7 +5,7 @@ import "./style.css";
 export function Buttons(props) {
   return (
     <div className="landing_btn_container">
-      <Link className="btn btn-outline-secondary" role="button" {...props} />
+      <Link to={props} className="btn btn-outline-secondary" role="button" {...props} />
     </div>
   );
 }
@@ -13,7 +13,7 @@ export function Buttons(props) {
 export function ReusableBtn(props) {
   return (
     <div className="col-sm-8 reusableButton">
-      <Link className="btn btn-outline-secondary reusableBtn" role="button" {...props} />
+      <Link to={props}className="btn btn-outline-secondary reusableBtn" role="button" {...props} />
     </div>
   );
 }
