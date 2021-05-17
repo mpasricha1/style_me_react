@@ -5,6 +5,7 @@ import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
 import { Input, LabelForInput } from "../components/Form";
 import { ReusableBtn } from "../components/Buttons";
+import { DropdownList, Options } from "../components/DropdownLists";
 import Footer from "../components/Footer";
 import { CloudinaryContext, Image } from "cloudinary-react";
 import { fetchPhotos, openUploadWidget } from "../utils/CloudinaryService";
@@ -67,6 +68,29 @@ function New_item() {
             >
               Add New Item
             </CloudinaryButton>
+            <div style={{ marginTop: "15px" }}>
+              <LabelForInput
+                style={{
+                  textDecoration: "none",
+                  color: "#6c757d",
+                  fontSize: "20px",
+                  marginRight: "10px"
+                }}
+              >
+                Choose a category:
+              </LabelForInput>
+              <DropdownList>
+                <Options>Tops</Options>
+                <Options>Jeans</Options>
+                <Options>Dress</Options>
+                <Options>Pants</Options>
+                <Options>Shoes</Options>
+                <Options>Handbags</Options>
+                <Options>Accesories</Options>
+                <Options>Skirt</Options>
+                <Options>Shorts</Options>
+              </DropdownList>
+            </div>
             <ImagePlaceholder />
             <section>
               {images.map((i) => (

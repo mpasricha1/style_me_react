@@ -1,17 +1,10 @@
 import React from "react";
 import "./style.css";
 
-export function NewItem_DropdownList(){
-    return (
-        <>
-        
-        </>
-    )
+export function DropdownList(props) {
+  return <select className="dropdownList" {...props} />;
 }
 
-export function BuildOutfit_DropdownList(){
-    return (
-        <>
-        </>
-    )
+export function Options(props) {
+  return <option {...props} />;
 }
