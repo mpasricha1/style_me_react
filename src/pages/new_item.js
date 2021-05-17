@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
@@ -44,87 +43,85 @@ function New_item() {
 
   return (
     <>
-      <Link to={"/newitem"} style={{ textDecoration: "none" }}>
-        <CloudinaryContext cloudName="dnx8v0ryu">
-          <div className="App">
-            <Header />
-            <div className="topButtons">
-              <ReusableBtn
-                to="/catalogs"
-                className="seeCatalogsBtn btn btn-outline-secondary"
-              >
-                See Catalogs
-              </ReusableBtn>
-              <ReusableBtn
-                to="/buildoutfit"
-                className="buildoutfitBtn btn btn-outline-secondary"
-              >
-                Build Outfit
-              </ReusableBtn>
-            </div>
-            <CloudinaryButton
-              onClick={() => beginUpload("image")}
-              className="upload_widget"
-            >
-              Add New Item
-            </CloudinaryButton>
-            <div style={{ marginTop: "15px" }}>
-              <LabelForInput
-                style={{
-                  textDecoration: "none",
-                  color: "#6c757d",
-                  fontSize: "20px",
-                  marginRight: "10px"
-                }}
-              >
-                Choose a category:
-              </LabelForInput>
-              <DropdownList>
-                <Options>Tops</Options>
-                <Options>Jeans</Options>
-                <Options>Dress</Options>
-                <Options>Pants</Options>
-                <Options>Shoes</Options>
-                <Options>Handbags</Options>
-                <Options>Accesories</Options>
-                <Options>Skirt</Options>
-                <Options>Shorts</Options>
-              </DropdownList>
-            </div>
-            <ImagePlaceholder />
-            <section>
-              {images.map((i) => (
-                <Image
-                  key={i}
-                  publicId={i}
-                  fetch-format="auto"
-                  quality="auto"
-                  style={{ height: "200px", width: "200px" }}
-                />
-              ))}
-            </section>
-            <div className="inputItemName">
-              <Input
-                // onChange={handleInputChange}
-                id="item_name"
-                className="itemName"
-                name="Item Name"
-                placeholder="Item Name"
-              />
-              <LabelForInput htmlFor="item_name" />
-            </div>
+      <CloudinaryContext cloudName="dnx8v0ryu">
+        <div className="App">
+          <Header />
+          <div className="topButtons">
             <ReusableBtn
-              id="addToCollection_Btn"
-              className="addToCollectionBtn reusableBtn"
-              type="submit"
+              to="/catalogs"
+              className="seeCatalogsBtn btn btn-outline-secondary"
             >
-              Add To Collection
+              See Catalogs
             </ReusableBtn>
-
-            <Footer />
+            <ReusableBtn
+              to="/buildoutfit"
+              className="buildoutfitBtn btn btn-outline-secondary"
+            >
+              Build Outfit
+            </ReusableBtn>
           </div>
-        </CloudinaryContext>
-      </Link>
+          <CloudinaryButton
+            onClick={() => beginUpload("image")}
+            className="upload_widget"
+          >
+            Add New Item
+          </CloudinaryButton>
+          <div style={{ marginTop: "15px" }}>
+            <LabelForInput
+              style={{
+                textDecoration: "none",
+                color: "#6c757d",
+                fontSize: "20px",
+                marginRight: "10px",
+              }}
+            >
+              Choose a category:
+            </LabelForInput>
+            <DropdownList>
+              <Options>Tops</Options>
+              <Options>Jeans</Options>
+              <Options>Dress</Options>
+              <Options>Pants</Options>
+              <Options>Shoes</Options>
+              <Options>Handbags</Options>
+              <Options>Accesories</Options>
+              <Options>Skirt</Options>
+              <Options>Shorts</Options>
+            </DropdownList>
+          </div>
+          <ImagePlaceholder />
+          <section>
+            {images.map((i) => (
+              <Image
+                key={i}
+                publicId={i}
+                fetch-format="auto"
+                quality="auto"
+                style={{ height: "200px", width: "200px" }}
+              />
+            ))}
+          </section>
+          <div className="inputItemName">
+            <Input
+              // onChange={handleInputChange}
+              id="item_name"
+              className="itemName"
+              name="Item Name"
+              placeholder="Item Name"
+            />
+            <LabelForInput htmlFor="item_name" />
+          </div>
+          <ReusableBtn
+            id="addToCollection_Btn"
+            className="addToCollectionBtn reusableBtn"
+            type="submit"
+          >
+            Add To Collection
+          </ReusableBtn>
+
+          <Footer />
+        </div>
+      </CloudinaryContext>
     </>
   );
 }
