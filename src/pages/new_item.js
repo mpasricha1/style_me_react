@@ -13,7 +13,11 @@ import API from "../utils/API";
 
 function New_item() {
   const [images, setImages] = useState([]);
-  // const [formObject, setFormObject] = useState("")
+  const [itemName, setItemName] = useState("");
+  const [url, setUrl] = useState("");
+  const [thumbnailUrl, setThumbnailUrl] = useState("");
+  const [type, setType] = useState("");
+  const [prediction, setPrediction] = useState(true);
 
   const beginUpload = (tag) => {
     const uploadOptions = {
@@ -22,7 +26,7 @@ function New_item() {
       uploadPreset: "qvqp5qcx",
     };
 
-    openUploadWidget(uploadOptions, (error, photos) => {
+    openUploadWidget(uploadOptions, async (error, photos) => {
       if (!error) {
         // console.log(photos);
         if (photos.event === "success") {
@@ -30,8 +34,11 @@ function New_item() {
 
           console.log("URL", photos.info.url);
           console.log("THUMBNAIL_URL", photos.info.thumbnail_url);
-          let prediction = API.getPrediction(photos.info.url);
-          console.log(prediction);
+          let prediction = await API.getPrediction(photos.info.url);
+          console.log(prediction.data.type);
+          setUrl(photos.info.url);
+          setThumbnailUrl(photos.info.thumbnail_url);
+          setType(prediction.data.type);
         }
       } else {
         console.log(error);
@@ -48,25 +55,23 @@ function New_item() {
   function handleInputChange(event) {
     const { name, value } = event.target;
     console.log(name, value);
-    const something = setFormObject(...formObject, value)
-    console.log(something);
+    setItemName(itemName, value);
   }
 
   // When the item name is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("Has to send data")
-    if (formObject.itemName) {
-      console.log(formObject.itemName)
-      // API.saveBook({
-      //   title: formObject.title,
-      //   author: formObject.author,
-      //   synopsis: formObject.synopsis,
-      // })
-      //   .then((res) => loadBooks())
-      //   .catch((err) => console.log(err));
-    }
+    console.log(url, thumbnailUrl, type, prediction);
+    API.saveItem({
+      url,
+      thumbnail: thumbnailUrl,
+      type,
+      prediction
+    })
+
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -95,45 +100,56 @@ function New_item() {
             Add New Item
           </CloudinaryButton>
           <div style={{ marginTop: "15px" }}>
-            <LabelForInput
-              style={{
-                textDecoration: "none",
-                color: "#6c757d",
-                fontSize: "20px",
-                marginRight: "10px",
-              }}
-            >
-              Choose a category:
-            </LabelForInput>
-            <DropdownList>
-              <Options>Tops</Options>
-              <Options>Jeans</Options>
-              <Options>Dress</Options>
-              <Options>Pants</Options>
-              <Options>Shoes</Options>
-              <Options>Handbags</Options>
-              <Options>Accesories</Options>
-              <Options>Skirt</Options>
-              <Options>Shorts</Options>
-            </DropdownList>
+            <button onClick={() => setPrediction(true)}>YES</button>
+            <button onClick={() => setPrediction(false)}>NO</button>
+            {prediction === false && (
+              <>
+                <LabelForInput
+                  style={{
+                    textDecoration: "none",
+                    color: "#6c757d",
+                    fontSize: "20px",
+                    marginRight: "10px",
+                  }}
+                >
+                  Choose a category:
+                </LabelForInput>
+                <DropdownList>
+                  <Options>Tops</Options>
+                  <Options>Jeans</Options>
+                  <Options>Dress</Options>
+                  <Options>Pants</Options>
+                  <Options>Shoes</Options>
+                  <Options>Handbags</Options>
+                  <Options>Accesories</Options>
+                  <Options>Skirt</Options>
+                  <Options>Shorts</Options>
+                </DropdownList>
+              </>
+            )}
           </div>
-          <ImagePlaceholder
-            className="img"
-            src={PlaceholderGray2}
-            style={{ maxWidth: "80%", maxHeight: "80%" }}
-            alt="placeholder"
-          />
-          <section>
-            {images.map((i) => (
-              <Image
-                key={i}
-                publicId={i}
-                fetch-format="auto"
-                quality="auto"
-                style={{ height: "200px", width: "200px" }}
-              />
-            ))}
-          </section>
+
+          {images.length <= 0 ? (
+            <ImagePlaceholder
+              className="img"
+              src={PlaceholderGray2}
+              style={{ maxWidth: "80%", maxHeight: "80%" }}
+              alt="placeholder"
+            />
+          ) : (
+            <section>
+              {images.map((i) => (
+                <Image
+                  key={i}
+                  publicId={i}
+                  fetch-format="auto"
+                  quality="auto"
+                  style={{ height: "200px", width: "200px" }}
+                />
+              ))}
+            </section>
+          )}
+
           <div className="inputItemName">
             <Input
               onChange={handleInputChange}
