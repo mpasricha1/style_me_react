@@ -102,3 +102,25 @@
   height: 100px;
   margin-bottom: 10px;
 }
+
+.predictionBtn {
+  margin-bottom: 20px !important;
+  width: 50%;
+  margin: auto;
+  border-style: solid !important;
+  border-width: 1px;
+  padding-top: 20px;
+  color: grey;
+}
+
+.truePredictionBtn, .falsePredictionBtn {
+  color: grey !important;
+  margin: 0 !important;
+  width: fit-content;
+}
+
+.truePredictionBtn:hover, .falsePredictionBtn:hover {
+  width: fit-content;
+  background-color: #939597;
+  color: white !important;
+}

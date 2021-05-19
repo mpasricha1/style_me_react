@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
@@ -8,7 +8,7 @@ import { DropdownList, Options } from "../components/DropdownLists";
 import PlaceholderGray2 from "../images/PlaceholderGray2.png";
 import Footer from "../components/Footer";
 import { CloudinaryContext, Image } from "cloudinary-react";
-import { fetchPhotos, openUploadWidget } from "../utils/CloudinaryService";
+import { openUploadWidget } from "../utils/CloudinaryService";
 import API from "../utils/API";
 
 function New_item() {
@@ -31,9 +31,8 @@ function New_item() {
         // console.log(photos);
         if (photos.event === "success") {
           setImages([...images, photos.info.public_id]);
-
-          console.log("URL", photos.info.url);
-          console.log("THUMBNAIL_URL", photos.info.thumbnail_url);
+          //console.log("URL", photos.info.url);
+          //console.log("THUMBNAIL_URL", photos.info.thumbnail_url);
           let prediction = await API.getPrediction(photos.info.url);
           console.log(prediction.data.type);
           setUrl(photos.info.url);
@@ -46,30 +45,25 @@ function New_item() {
     });
   };
 
-  // useEffect(() => {
-  //   fetchPhotos("image", setImages);
-
-  // }, []);
-
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
-    const { name, value } = event.target;
-    console.log(name, value);
-    setItemName(itemName, value);
+    const { value } = event.target;
+    // console.log(value);
+    setItemName(value);
   }
 
   // When the item name is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(url, thumbnailUrl, type, prediction);
+    console.log(url, thumbnailUrl, type, prediction, itemName);
     API.saveItem({
       url,
       thumbnail: thumbnailUrl,
       type,
-      prediction
+      prediction,
+      itemName,
     })
-
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
@@ -99,56 +93,75 @@ function New_item() {
           >
             Add New Item
           </CloudinaryButton>
-          <div style={{ marginTop: "15px" }}>
-            <button onClick={() => setPrediction(true)}>YES</button>
-            <button onClick={() => setPrediction(false)}>NO</button>
-            {prediction === false && (
+          <div style={{ marginTop: "15px", marginBottom: "20px" }}>
+            {images.length <= 0 ? (
+              <ImagePlaceholder
+                className="img"
+                src={PlaceholderGray2}
+                style={{ maxWidth: "60%", maxHeight: "60%" }}
+                alt="placeholder"
+              />
+            ) : (
               <>
-                <LabelForInput
-                  style={{
-                    textDecoration: "none",
-                    color: "#6c757d",
-                    fontSize: "20px",
-                    marginRight: "10px",
-                  }}
-                >
-                  Choose a category:
-                </LabelForInput>
-                <DropdownList>
-                  <Options>Tops</Options>
-                  <Options>Jeans</Options>
-                  <Options>Dress</Options>
-                  <Options>Pants</Options>
-                  <Options>Shoes</Options>
-                  <Options>Handbags</Options>
-                  <Options>Accesories</Options>
-                  <Options>Skirt</Options>
-                  <Options>Shorts</Options>
-                </DropdownList>
+                <div className="predictionBtn">
+                  <p>
+                    Would you like to choose **{type}** as the correct category
+                    for your image?{" "}
+                  </p>
+                  <button
+                    className="btn truePredictionBtn"
+                    onClick={() => setPrediction(true)}
+                  >
+                    YES
+                  </button>
+                  <button
+                    className="btn falsePredictionBtn"
+                    onClick={() => setPrediction(false)}
+                  >
+                    NO
+                  </button>
+                </div>
+
+                {prediction === false && (
+                  <>
+                    <LabelForInput
+                      style={{
+                        textDecoration: "none",
+                        color: "#6c757d",
+                        fontSize: "20px",
+                        marginRight: "10px",
+                      }}
+                    >
+                      Choose a category:
+                    </LabelForInput>
+                    <DropdownList style={{ marginBottom: "20px" }}>
+                      <Options>Tops</Options>
+                      <Options>Jeans</Options>
+                      <Options>Dress</Options>
+                      <Options>Pants</Options>
+                      <Options>Shoes</Options>
+                      <Options>Handbags</Options>
+                      <Options>Accesories</Options>
+                      <Options>Skirt</Options>
+                      <Options>Shorts</Options>
+                    </DropdownList>
+                  </>
+                )}
+
+                <section>
+                  {images.map((i) => (
+                    <Image
+                      key={i}
+                      publicId={i}
+                      fetch-format="auto"
+                      quality="auto"
+                      style={{ height: "60%", width: "60%" }}
+                    />
+                  ))}
+                </section>
               </>
             )}
           </div>
-
-          {images.length <= 0 ? (
-            <ImagePlaceholder
-              className="img"
-              src={PlaceholderGray2}
-              style={{ maxWidth: "80%", maxHeight: "80%" }}
-              alt="placeholder"
-            />
-          ) : (
-            <section>
-              {images.map((i) => (
-                <Image
-                  key={i}
-                  publicId={i}
-                  fetch-format="auto"
-                  quality="auto"
-                  style={{ height: "200px", width: "200px" }}
-                />
-              ))}
-            </section>
-          )}
 
           <div className="inputItemName">
             <Input

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { fetchPhotos } from "./CloudinaryService";
+// import { fetchPhotos } from "./CloudinaryService";
 
 export default {
   getPrediction: function (url) {

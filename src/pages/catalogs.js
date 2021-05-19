@@ -12,6 +12,16 @@ import TemplateImage from "../images/sampleCatalog.png";
 import Footer from "../components/Footer";
 
 function Catalogs() {
+  // const [outfits, setOutfits] = useState([]);
+
+  function handleOutfits(event) {
+
+    console.log(event.target);
+    // const { name, value } = event.target;
+    // console.log(name, value);
+    // setOutfits([]);
+  }
+
   return (
     <>
       <Header />
@@ -31,7 +41,7 @@ function Catalogs() {
       </div>
 
       <ListContainer style={{ display: "flex" }}>
-        <UnorderedList className="ulElement">
+        <UnorderedList className="ulElement" onClick={handleOutfits}>
           Spring
           <ListElement className="liElement">
             <ImgTag src={TemplateImage} className="imgElement" />
@@ -41,7 +51,7 @@ function Catalogs() {
           </ListElement>
         </UnorderedList>
 
-        <UnorderedList className="ulElement">
+        <UnorderedList className="ulElement" onClick={handleOutfits}>
           Summer
           <ListElement>
             <ImgTag src={TemplateImage} className="imgElement" />
@@ -51,7 +61,7 @@ function Catalogs() {
           </ListElement>
         </UnorderedList>
 
-        <UnorderedList className="ulElement">
+        <UnorderedList className="ulElement" onClick={handleOutfits}>
           Fall
           <ListElement>
             <ImgTag src={TemplateImage} className="imgElement" />
@@ -61,7 +71,7 @@ function Catalogs() {
           </ListElement>
         </UnorderedList>
 
-        <UnorderedList className="ulElement">
+        <UnorderedList className="ulElement" onClick={handleOutfits}>
           Winter
           <ListElement>
             <ImgTag src={TemplateImage} className="imgElement" />
