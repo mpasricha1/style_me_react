@@ -104,9 +104,9 @@ function New_item() {
             ) : (
               <>
                 <div className="predictionBtn">
-                  <p>
+                  <p className="questionToTheUser">
                     Would you like to choose **{type}** as the correct category
-                    for your image?{" "}
+                    for your image?
                   </p>
                   <button
                     className="btn truePredictionBtn"
