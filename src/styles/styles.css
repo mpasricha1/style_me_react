@@ -107,7 +107,7 @@
   margin-bottom: 20px !important;
   width: 50%;
   margin: auto;
-  border-style: solid !important;
+  border-style: solid;
   border-width: 1px;
   padding-top: 20px;
   color: grey;
@@ -127,4 +127,10 @@
 
 .questionToTheUser{
   margin: auto 5px;
+}
+
+.dropdownList {
+  margin-bottom: 20px;
+  width: 15%;
+  height: 30px;
 }

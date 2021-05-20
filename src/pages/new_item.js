@@ -4,7 +4,7 @@ import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
 import { Input, LabelForInput } from "../components/Form";
 import { ReusableBtn } from "../components/Buttons";
-import { DropdownList, Options } from "../components/DropdownLists";
+import { Select, Options } from "../components/DropdownLists";
 import PlaceholderGray2 from "../images/PlaceholderGray2.png";
 import Footer from "../components/Footer";
 import { CloudinaryContext, Image } from "cloudinary-react";
@@ -17,7 +17,7 @@ function New_item() {
   const [url, setUrl] = useState("");
   const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [type, setType] = useState("");
-  const [prediction, setPrediction] = useState(true);
+  let [prediction, setPrediction] = useState(true);
 
   const beginUpload = (tag) => {
     const uploadOptions = {
@@ -33,11 +33,12 @@ function New_item() {
           setImages([...images, photos.info.public_id]);
           //console.log("URL", photos.info.url);
           //console.log("THUMBNAIL_URL", photos.info.thumbnail_url);
-          let prediction = await API.getPrediction(photos.info.url);
-          console.log(prediction.data.type);
+          // let prediction = await API.getPrediction(photos.info.url);
+          // console.log(prediction.data.type);
           setUrl(photos.info.url);
           setThumbnailUrl(photos.info.thumbnail_url);
-          setType(prediction.data.type);
+          // setType(prediction.data.type);
+          setType("Pants");
         }
       } else {
         console.log(error);
@@ -52,8 +53,33 @@ function New_item() {
     setItemName(value);
   }
 
-  // When the item name is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
+  // If setPrediction is true, then keep the returned setType
+  // if setPrediction is false, then grab the value of an option
+  //  inside the dropdownlist and return that value as
+  //  the new setType.
+  function categoryType(event) {
+    event.preventDefault();
+    if (event.target.innerHTML === "YES") {
+      prediction = true;
+      console.log(prediction);
+      document.querySelector(".questionToTheUser").style.display = "";
+      document.querySelector(".predictionBtn").style.borderStyle = "solid";
+      setPrediction(prediction);
+      setType("Pants");
+    } else if (event.target.innerHTML === "NO") {
+      prediction = false;
+      console.log(prediction);
+      setPrediction(prediction);
+      document.querySelector(".questionToTheUser").style.display = "none";
+      document.querySelector(".predictionBtn").style.borderStyle = "none";
+     
+      // let newItemType = document.querySelector(".dropdownOptions").innerHTML;
+      // console.log(newItemType);
+      // setType(newItemType);
+    }
+  }
+
+  // When the item name is submitted, use the API.saveItem method to save the item data
   function handleSubmit(event) {
     event.preventDefault();
     console.log(url, thumbnailUrl, type, prediction, itemName);
@@ -105,18 +131,24 @@ function New_item() {
               <>
                 <div className="predictionBtn">
                   <p className="questionToTheUser">
-                    Would you like to choose **{type}** as the correct category
-                    for your image?
+                    We have detected your image to likely be part of a **{type}
+                    ** category.
+                    <br />
+                    Would you like to keep this category?
                   </p>
+
                   <button
                     className="btn truePredictionBtn"
-                    onClick={() => setPrediction(true)}
+                    // onClick={() => setPrediction(true)}
+                    onClick={categoryType}
                   >
                     YES
                   </button>
+
                   <button
                     className="btn falsePredictionBtn"
-                    onClick={() => setPrediction(false)}
+                    // onClick={() => setPrediction(false)}
+                    onClick={categoryType}
                   >
                     NO
                   </button>
@@ -134,17 +166,27 @@ function New_item() {
                     >
                       Choose a category:
                     </LabelForInput>
-                    <DropdownList style={{ marginBottom: "20px" }}>
-                      <Options>Tops</Options>
-                      <Options>Jeans</Options>
-                      <Options>Dress</Options>
-                      <Options>Pants</Options>
-                      <Options>Shoes</Options>
-                      <Options>Handbags</Options>
-                      <Options>Accesories</Options>
-                      <Options>Skirt</Options>
-                      <Options>Shorts</Options>
-                    </DropdownList>
+                    <Select
+                      className="dropdownList"
+                      style={{ marginBottom: "30px" }}
+                      onChange={categoryType}
+                    >
+                      <Options className="dropdownOptions" value="tops">
+                        Tops
+                      </Options>
+                      <Options className="dropdownOptions" value="jeans">
+                        Jeans
+                      </Options>
+                      <Options className="dropdownOptions" value="dress">
+                        Dress
+                      </Options>
+                      <Options value="pants">Pants</Options>
+                      <Options value="shoes">Shoes</Options>
+                      <Options value="handbags">Handbags</Options>
+                      <Options value="accesories">Accesories</Options>
+                      <Options value="skirt">Skirt</Options>
+                      <Options value="shorts">Shorts</Options>
+                    </Select>
                   </>
                 )}
 
