@@ -1,13 +1,17 @@
 const express = require('express');
 const session = require('express-session')
 const routes = require('./routes'); 
-const app = express(); 
-const PORT = process.env.PORT || 4000;
+const path = require('path');
 
 require("dotenv").config();
+
+const app = express(); 
+const PORT = process.env.PORT || 4000;
+const db = require('./models')
+
 const passport = require('./config/passport');
 
-app.use(express.urlencoding({ extended: true})); 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(session({ secret: process.env.SECRET_KEY, resave:true, saveUninitialized: true}))

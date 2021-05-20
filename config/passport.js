@@ -1,11 +1,15 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const GOOGLE_CLIENT_ID= '264543307047-7bfqg9rflmoldp36jsn3iq7djqpsjosg.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET= 'm3Hwx36oB2fh9u6tPcH8b9m4';
+//const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+//const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const randomGen = require("../utils/randomString.js");
 
 const db = require("../models");
+
+console.log(process.env)
 
 passport.use(new LocalStrategy(
   {
@@ -46,13 +50,11 @@ passport.use(new GoogleStrategy({
         let data = await db.User.create({
           full_name: profile.displayName, 
           google_id: profile.id,
-          email: `trashgoogle${emailValue.dataValues.value}@trash.com`, 
+          email: profile.email, 
           password: randomGen.generateString()
         });
         profile.google_id = profile.id; 
         profile.id = data.id;
-        await db.Counters.update({value: emailValue.dataValues.value += 1},{
-          where: {counter_name: "google email"}});
       }else{
         profile.google_id = profile.id; 
         profile.id = dbUser.dataValues.id;

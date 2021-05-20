@@ -1,13 +1,16 @@
-model.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
 	const Comment = sequelize.define("Comment", {
 		user_id: {
-			type: DataTypes.Integer, 
+			type: DataTypes.INTEGER, 
 			allowNull: false
 		}, 
-		text: DataTypes.String(255); 
-		likes: DataTypes.Integer; 
+		text: DataTypes.STRING(255),
+		likes: DataTypes.INTEGER
 	}); 
-	models.Comment.belongsTo(models.User {foreignKey: {allowNull: false}}); 
+	Comment.associate = (models) => {
+		models.Comment.belongsTo(models.User, {foreignKey: {allowNull: false}}); 
+	}
+	
 
 	return Comment; 
 }

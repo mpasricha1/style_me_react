@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) =>{
-	const comment_item = sequelize.difine("Comment_item"); 
+	const Post_item = sequelize.define("Post_item"); 
 
-	Comment_item.associate = (models) => {
-		models.Comment_item.belongsTo(models.Post, {foreignKey: {allowNulls: false}});
-		models.Comment_item.belongsTo(models.Comment, {foreignKey: {allowNulls: false}});
+	Post_item.associate = (models) => {
+		models.Post_item.belongsTo(models.Post, {foreignKey: {allowNulls: false}});
+		models.Post_item.belongsTo(models.Comment, {foreignKey: {allowNulls: false}});
 	}
 
-	return Comment_item; 
+	return Post_item; 
 }
