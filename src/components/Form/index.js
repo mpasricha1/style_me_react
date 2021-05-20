@@ -10,13 +10,7 @@ export function Image(props) {
 }
 
 export function Input(props) {
-  return (
-    <form>
-      <div className="form-floating mb-3 input_field">
-        <input className="form-control" {...props} />
-      </div>
-    </form>
-  );
+  return <input className="form-control" {...props} />;
 }
 
 export function LabelForInput(props) {
