@@ -18,8 +18,8 @@ export default {
 
   // ********** test UserRouter ****
  
-  testUserRouter: function(data){
-    return axios.post(console.log(data));
+  testUserRouter: function(userData){
+    return axios.post(console.log(userData));
   },
 
 
