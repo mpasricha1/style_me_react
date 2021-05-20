@@ -10,7 +10,8 @@ import API from "../utils/API";
 
 function Signup() {
   // **************** TEST ****************
-  // const { email, setEmail, loggedIn, setLoggedIn } = useContext(UserContext);
+  const { id, setId, name, setName, loggedIn, setLoggedIn } =
+    useContext(UserContext);
   const firstNameInput = useRef();
   const lastNameInput = useRef();
   const emailInput = useRef();
@@ -19,17 +20,24 @@ function Signup() {
   const handleSubmit = (event) => {
     // if the user hits enter or hits the button, this function will fire
     event.preventDefault();
-
     console.log({
-      firstName: firstNameInput.current.value,
-      lastname: lastNameInput.current.value,
+      name: firstNameInput.current.value + " " + lastNameInput.current.value,
       email: emailInput.current.value,
       password: passwordInput.current.value,
     });
-
-    API.testUserRouter().then((data) => {
-      console.log(data);
-    });
+    
+    API.testUserRouter({
+      name: firstNameInput.current.value + " " + lastNameInput.current.value,
+      email: emailInput.current.value,
+      password: passwordInput.current.value,
+    })
+      .then((data) => {
+        console.log(data);
+        setId(id);
+        setName(name);
+        setLoggedIn(true);
+      })
+      .catch((err) => console.log(err));
   };
 
   // **************** - * -  ****************
@@ -41,7 +49,7 @@ function Signup() {
       <form onSubmit={handleSubmit}>
         <div className="form-floating mb-3 input_field">
           <input
-          ref={firstNameInput}
+            ref={firstNameInput}
             type="text"
             id="first_name"
             className="inputBox firstInputBox"
@@ -51,7 +59,7 @@ function Signup() {
           />
 
           <input
-          ref={lastNameInput}
+            ref={lastNameInput}
             type="text"
             id="last_name"
             className="inputBox"
@@ -89,7 +97,7 @@ function Signup() {
             Sign Me Up
           </button>
         </div>
-        {/* <Buttons type="submit" onClick={handleSubmit}>Sign Me Up</Buttons> */}
+
         <Buttons to="/home">Cancel</Buttons>
       </form>
       <Footer />
