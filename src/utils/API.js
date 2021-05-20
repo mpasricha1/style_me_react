@@ -15,4 +15,13 @@ export default {
     console.log(data);
     return axios.post("/api/newitem", data);
   },
+
+  // ********** test UserRouter ****
+ 
+  testUserRouter: function(data){
+    return axios.post(console.log(data));
+  },
+
+
+  // ******************************
 };
