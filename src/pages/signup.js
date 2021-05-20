@@ -1,20 +1,47 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import Header from "../components/Header";
-import { Input, Image } from "../components/Form";
+import { Image } from "../components/Form";
 import { Buttons } from "../components/Buttons";
 import GenericImage from "../images/styleMe.png";
 import Footer from "../components/Footer";
 import "../styles/styles.css";
+import UserContext from "../utils/UserContext";
+import API from "../utils/API";
 
 function Signup() {
+  // **************** TEST ****************
+  // const { email, setEmail, loggedIn, setLoggedIn } = useContext(UserContext);
+  const firstNameInput = useRef();
+  const lastNameInput = useRef();
+  const emailInput = useRef();
+  const passwordInput = useRef();
+
+  const handleSubmit = (event) => {
+    // if the user hits enter or hits the button, this function will fire
+    event.preventDefault();
+
+    console.log({
+      firstName: firstNameInput.current.value,
+      lastname: lastNameInput.current.value,
+      email: emailInput.current.value,
+      password: passwordInput.current.value,
+    });
+
+    API.testUserRouter().then((data) => {
+      console.log(data);
+    });
+  };
+
+  // **************** - * -  ****************
   return (
     <>
       <Header />
       <Image src={GenericImage} alt="Style Me" className="style_me_logo" />
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-floating mb-3 input_field">
-          <Input
+          <input
+          ref={firstNameInput}
             type="text"
             id="first_name"
             className="inputBox firstInputBox"
@@ -23,7 +50,8 @@ function Signup() {
             required=""
           />
 
-          <Input
+          <input
+          ref={lastNameInput}
             type="text"
             id="last_name"
             className="inputBox"
@@ -32,8 +60,9 @@ function Signup() {
             required=""
           />
 
-          <Input
-            type="text"
+          <input
+            ref={emailInput}
+            type="email"
             id="email"
             className="inputBox"
             placeholder="Email"
@@ -41,7 +70,8 @@ function Signup() {
             required=""
           />
 
-          <Input
+          <input
+            ref={passwordInput}
             type="password"
             id="password"
             className="inputBox"
@@ -50,8 +80,16 @@ function Signup() {
             required=""
           />
         </div>
-
-        <Buttons>Sign Me Up</Buttons>
+        <div className="landing_btn_container">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="btn btn-outline-secondary signmeUpBtn"
+          >
+            Sign Me Up
+          </button>
+        </div>
+        {/* <Buttons type="submit" onClick={handleSubmit}>Sign Me Up</Buttons> */}
         <Buttons to="/home">Cancel</Buttons>
       </form>
       <Footer />

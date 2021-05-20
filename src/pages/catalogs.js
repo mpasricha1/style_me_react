@@ -12,14 +12,11 @@ import TemplateImage from "../images/sampleCatalog.png";
 import Footer from "../components/Footer";
 
 function Catalogs() {
-  // const [outfits, setOutfits] = useState([]);
+  // const [outfits, setOutfits] = useState();
 
   function handleOutfits(event) {
-
     console.log(event.target);
-    // const { name, value } = event.target;
-    // console.log(name, value);
-    // setOutfits([]);
+   
   }
 
   return (
@@ -82,7 +79,11 @@ function Catalogs() {
         </UnorderedList>
       </ListContainer>
 
-      <ListContainer>"outfits will be display here"</ListContainer>
+      <ListContainer>"outfits will be display here"
+        <ListElement>
+          <ImgTag src="" className="diplayOutfits"/>
+        </ListElement>
+      </ListContainer>
       <Footer />
     </>
   );
