@@ -33,12 +33,12 @@ function New_item() {
           setImages([...images, photos.info.public_id]);
           //console.log("URL", photos.info.url);
           //console.log("THUMBNAIL_URL", photos.info.thumbnail_url);
-          // let prediction = await API.getPrediction(photos.info.url);
-          // console.log(prediction.data.type);
+          let prediction = await API.getPrediction(photos.info.url);
+          console.log(prediction.data.type);
           setUrl(photos.info.url);
           setThumbnailUrl(photos.info.thumbnail_url);
-          // setType(prediction.data.type);
-          setType("Pants");
+          setType(prediction.data.type);
+          // setType("Pants");
         }
       } else {
         console.log(error);
@@ -65,7 +65,8 @@ function New_item() {
       document.querySelector(".questionToTheUser").style.display = "";
       document.querySelector(".predictionBtn").style.borderStyle = "solid";
       setPrediction(prediction);
-      setType("Pants");
+      setType(prediction.data.type);
+      // setType("Pants");
     } else if (event.target.innerHTML === "NO") {
       prediction = false;
       console.log(prediction);
@@ -211,7 +212,7 @@ function New_item() {
               name="Item_name"
               placeholder="Item Name"
             />
-            <LabelForInput htmlFor="item_name" />
+            {/* <LabelForInput htmlFor="item_name" /> */}
           </div>
           <ReusableBtn
             id="addToCollection_Btn"
