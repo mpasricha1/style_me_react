@@ -1,12 +1,12 @@
-import {createContext} from 'react'; 
+import {createContext} from 'react';
 
 const UserContext = createContext({
-	id: ""
-	setId: () => {},
-	name: "", 
-	setName: () => {},
-	loggedIn: false,
-	setLoggedIn: () => {}
-}); 
+    id:"",
+    setId:() => {},
+    name:"",
+    setName:() => {},
+    loggedIn: false,
+    setLoggedIn: () => {}
+});
 
-export default UserContext; 
+export default UserContext;

@@ -5,17 +5,9 @@ import "./style.css";
 function Header() {
   return (
     <>
-
-
-        <Link
-          to="/home"
-          className="logo logo_container"
-          
-        >
-          Style Me
-        </Link>
-      
-
+      <Link to="/home" className="logo logo_container">
+        Style Me
+      </Link>
     </>
   );
 }

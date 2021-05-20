@@ -9,8 +9,6 @@ const randomGen = require("../utils/randomString.js");
 
 const db = require("../models");
 
-console.log(process.env)
-
 passport.use(new LocalStrategy(
   {
     usernameField: "email",
