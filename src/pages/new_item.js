@@ -72,11 +72,15 @@ function New_item() {
       setPrediction(prediction);
       document.querySelector(".questionToTheUser").style.display = "none";
       document.querySelector(".predictionBtn").style.borderStyle = "none";
-     
-      // let newItemType = document.querySelector(".dropdownOptions").innerHTML;
-      // console.log(newItemType);
-      // setType(newItemType);
     }
+  }
+
+  // handles the category options the user chooses from the dropdown list
+  function handleDropdownOptions(event) {
+    let selectCategory = event.target.value;
+    console.log(selectCategory);
+    setType(selectCategory);
+
   }
 
   // When the item name is submitted, use the API.saveItem method to save the item data
@@ -131,8 +135,8 @@ function New_item() {
               <>
                 <div className="predictionBtn">
                   <p className="questionToTheUser">
-                    We have detected your image to likely be part of a **{type}
-                    ** category.
+                    Category: **{type}
+                    **
                     <br />
                     Would you like to keep this category?
                   </p>
@@ -169,23 +173,17 @@ function New_item() {
                     <Select
                       className="dropdownList"
                       style={{ marginBottom: "30px" }}
-                      onChange={categoryType}
+                      onChange={handleDropdownOptions}
                     >
-                      <Options className="dropdownOptions" value="tops">
-                        Tops
-                      </Options>
-                      <Options className="dropdownOptions" value="jeans">
-                        Jeans
-                      </Options>
-                      <Options className="dropdownOptions" value="dress">
-                        Dress
-                      </Options>
-                      <Options value="pants">Pants</Options>
-                      <Options value="shoes">Shoes</Options>
-                      <Options value="handbags">Handbags</Options>
-                      <Options value="accesories">Accesories</Options>
-                      <Options value="skirt">Skirt</Options>
-                      <Options value="shorts">Shorts</Options>
+                      <Options>Tops</Options>
+                      <Options>Jeans</Options>
+                      <Options>Dress</Options>
+                      <Options>Pants</Options>
+                      <Options>Shoes</Options>
+                      <Options>Handbags</Options>
+                      <Options>Accesories</Options>
+                      <Options>Skirt</Options>
+                      <Options>Shorts</Options>
                     </Select>
                   </>
                 )}
