@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export function DropdownList(props) {
+export function Select(props) {
   return <select className="dropdownList" {...props} />;
 }
 
