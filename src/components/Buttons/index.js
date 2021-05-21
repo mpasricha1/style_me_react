@@ -17,3 +17,9 @@ export function ReusableBtn(props) {
     </div>
   );
 }
+
+export function SocialBtn(props) {
+  return (
+      <Link to={props}className="btn btn-outline-secondary socialBtn" role="button" {...props} />
+  );
+}
