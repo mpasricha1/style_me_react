@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { ReusableBtn } from "../components/Buttons";
 import {
@@ -8,15 +8,29 @@ import {
   ImgTag,
 } from "../components/ulElements";
 import TemplateImage from "../images/sampleCatalog.png";
-
 import Footer from "../components/Footer";
+import API from "../utils/API";
 
 function Catalogs() {
-  // const [outfits, setOutfits] = useState();
+  const [outfits, setOutfits] = useState([]);
+
+  useEffect(() => {
+    loadOutfits();
+  }, []);
+
+  function loadOutfits() {
+    API.getOutfits()
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        setOutfits(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
   function handleOutfits(event) {
     console.log(event.target);
-   
+    document.querySelector(".displayOutfits").style.display = "block";
   }
 
   return (
@@ -24,7 +38,7 @@ function Catalogs() {
       <Header />
       <div className="topButtons">
         <ReusableBtn
-          to="/newitem"
+          to="/item"
           className="newItemBtn btn btn-outline-secondary"
         >
           Add New Item
@@ -79,11 +93,23 @@ function Catalogs() {
         </UnorderedList>
       </ListContainer>
 
-      <ListContainer>"outfits will be display here"
-        <ListElement>
-          <ImgTag src="" className="diplayOutfits"/>
-        </ListElement>
+      <ListContainer className="displayOutfits">
+        {outfits.length ? (
+          outfits.map((outfit) => (
+            <ListElement>
+              <ImgTag
+                src={outfit}
+                key={outfit.id}
+                className="diplayOutfits"
+                alt=""
+              />
+            </ListElement>
+          ))
+        ) : (
+          <h3>No outfits available</h3>
+        )}
       </ListContainer>
+
       <Footer />
     </>
   );

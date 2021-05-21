@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
@@ -18,6 +18,21 @@ function New_item() {
   const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [type, setType] = useState("");
   let [prediction, setPrediction] = useState(true);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  function loadCategories() {
+    API.getCategories()
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        setCategories(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
   const beginUpload = (tag) => {
     const uploadOptions = {
@@ -38,7 +53,6 @@ function New_item() {
           setUrl(photos.info.url);
           setThumbnailUrl(photos.info.thumbnail_url);
           setType(prediction.data.type);
-          // setType("Pants");
         }
       } else {
         console.log(error);
@@ -79,7 +93,6 @@ function New_item() {
     let selectCategory = event.target.value;
     console.log(selectCategory);
     setType(selectCategory);
-
   }
 
   // When the item name is submitted, use the API.saveItem method to save the item data
@@ -142,7 +155,6 @@ function New_item() {
 
                   <button
                     className="btn truePredictionBtn"
-                    // onClick={() => setPrediction(true)}
                     onClick={categoryType}
                   >
                     YES
@@ -150,7 +162,6 @@ function New_item() {
 
                   <button
                     className="btn falsePredictionBtn"
-                    // onClick={() => setPrediction(false)}
                     onClick={categoryType}
                   >
                     NO
@@ -174,7 +185,14 @@ function New_item() {
                       style={{ marginBottom: "30px" }}
                       onChange={handleDropdownOptions}
                     >
-                      <Options>Tops</Options>
+                      {/* ======= should render all categories ====== */}
+                      {categories.map((category) => (
+                        <Options key={category.id} value={category}>{category}</Options>
+                      ))}
+
+                      {/* ====================================== */}
+
+                      {/* <Options>Tops</Options>
                       <Options>Jeans</Options>
                       <Options>Dress</Options>
                       <Options>Pants</Options>
@@ -182,7 +200,7 @@ function New_item() {
                       <Options>Handbags</Options>
                       <Options>Accesories</Options>
                       <Options>Skirt</Options>
-                      <Options>Shorts</Options>
+                      <Options>Shorts</Options> */}
                     </Select>
                   </>
                 )}
