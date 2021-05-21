@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) =>{
 		image_thumbnail: {
 			type: DataTypes.STRING(255), 
 			allowNull: false
-		}
+		}, 
+		type: DataTypes.STRING(255)
 	})
 
 	Item.associate = (models) =>{ 

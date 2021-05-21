@@ -2,6 +2,10 @@ const router = require("express").Router();
 const db = require("../../models");
 const passport = require("../../config/passport") 
 
+router.get("/test", (req, res) => {
+    res.json(true);
+});
+
 router.post('/login', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
@@ -13,10 +17,10 @@ router.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
-router.get("/logout", (req, res ) =>{
-	req.logout();
-	res.redirect("/");
-});
+// router.get("/logout", (req, res ) =>{
+// 	// req.logout();
+// 	// res.redirect("/");
+// });
 
 router.get('/auth/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
@@ -24,7 +28,6 @@ router.get('/auth/google',
 router.get('/auth/google/callback', 
   passport.authenticate('google', { successRedirect : '/catalog', failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect success.
     res.redirect('/catalog');
   });
 
@@ -37,8 +40,8 @@ router.post("/signup", (req,res) =>{
 		email: req.body.email, 
 		password: req.body.password,
 	})
-	.then( () =>{
-		res.redirect(307, "/login");
+	.then(data =>{
+		res.json(data)
 	})
 	.catch((err) =>{
 		res.status(401).json(err);
