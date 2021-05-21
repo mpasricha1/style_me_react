@@ -280,3 +280,8 @@ border-radius: 20px;
   width: 20%;
   background: white;
 }
+
+.displayOutfits {
+  display: none;
+  margin-bottom: 25px;
+}

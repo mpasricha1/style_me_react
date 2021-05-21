@@ -187,7 +187,7 @@ function New_item() {
                     >
                       {/* ======= should render all categories ====== */}
                       {categories.map((category) => (
-                        <Options id={category.id}>{category.name}</Options>
+                        <Options key={category.id} value={category}>{category}</Options>
                       ))}
 
                       {/* ====================================== */}
