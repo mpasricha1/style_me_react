@@ -5,7 +5,9 @@ function Build_outfit() {
   return (
     <>
       <Link to={"/buildoutfit"}>
-        <h1>Build Outfit Page</h1>
+
+  <h1>Build Outfit Page</h1>
+
       </Link>
     </>
   );
