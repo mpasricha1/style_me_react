@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import CloudinaryButton from "../components/Cloudinary_Button";
 import ImagePlaceholder from "../components/Image_placeholder";
@@ -18,6 +18,22 @@ function New_item() {
   const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [type, setType] = useState("");
   let [prediction, setPrediction] = useState(true);
+  const[categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    loadCategories()
+  }, [])
+
+  function loadCategories() {
+    API.getCategories()
+      .then(res => { 
+        console.log(res)
+        console.log(res.data)
+        setCategories(res.data)
+      }
+      )
+      .catch(err => console.log(err));
+  };
 
   const beginUpload = (tag) => {
     const uploadOptions = {
@@ -38,7 +54,6 @@ function New_item() {
           setUrl(photos.info.url);
           setThumbnailUrl(photos.info.thumbnail_url);
           setType(prediction.data.type);
-          // setType("Pants");
         }
       } else {
         console.log(error);
@@ -65,8 +80,6 @@ function New_item() {
       document.querySelector(".questionToTheUser").style.display = "";
       document.querySelector(".predictionBtn").style.borderStyle = "solid";
       setPrediction(prediction);
-      setType(prediction.data.type);
-      // setType("Pants");
     } else if (event.target.innerHTML === "NO") {
       prediction = false;
       console.log(prediction);

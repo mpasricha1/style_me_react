@@ -29,7 +29,7 @@ function App() {
         <Route exact path={["/catalogs"]}>
           <Catalogs />
         </Route>
-        <Route exact path={["/newitem"]}>
+        <Route exact path={["/item"]}>
           <NewItem />
         </Route>
         <Route exact path={["/social"]}>

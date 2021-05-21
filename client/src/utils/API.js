@@ -10,18 +10,20 @@ export default {
       .then((data) => data)
       .catch((err) => console.log(err));
   },
-
+// Saves new item data
   saveItem: function (data) {
     console.log(data);
-    return axios.post("/api/newitem", data);
+    return axios.post("/api/item", data);
   },
-
-  // ********** test UserRouter ****
  
+  // Testing for login and signup
   testUserRouter: function(userData){
     return axios.post(console.log(userData));
   },
 
+  // Gets all categories
+  getCategories: function() {
+    return axios.get("/api/category");
+  },
 
-  // ******************************
 };
