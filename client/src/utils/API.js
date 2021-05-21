@@ -26,4 +26,9 @@ export default {
     return axios.get("/api/category");
   },
 
+  // Gets all outfits
+  getOutfits: function() {
+    return axios.get("/api/outfit");
+  },
+
 };
