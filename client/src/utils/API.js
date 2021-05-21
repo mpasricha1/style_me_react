@@ -13,7 +13,7 @@ export default {
 
   saveItem: function (data) {
     console.log(data);
-    return axios.post("/api/newitem", data);
+    return axios.post("/api/item", data);
   },
 
   // ********** test UserRouter ****

@@ -65,8 +65,6 @@ function New_item() {
       document.querySelector(".questionToTheUser").style.display = "";
       document.querySelector(".predictionBtn").style.borderStyle = "solid";
       setPrediction(prediction);
-      setType(prediction.data.type);
-      // setType("Pants");
     } else if (event.target.innerHTML === "NO") {
       prediction = false;
       console.log(prediction);
