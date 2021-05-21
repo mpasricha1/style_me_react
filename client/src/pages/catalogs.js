@@ -24,7 +24,7 @@ function Catalogs() {
       <Header />
       <div className="topButtons">
         <ReusableBtn
-          to="/newitem"
+          to="/item"
           className="newItemBtn btn btn-outline-secondary"
         >
           Add New Item
