@@ -14,16 +14,9 @@ module.exports = (sequelize, DataTypes) =>{
 			allowNull: false
 		}, 
 		prediction: {
-<<<<<<< HEAD
 			type: DataTypes.BOOLEAN, 
 			allowNull: false
-		}, 
-=======
-			type: DataTypes.BOOLEAN,
-			allowNull: false	
-		},
-		type: DataTypes.STRING(255)
->>>>>>> 037563befae586f26e32d5eb37a38edad1b54265
+		}
 	})
 
 	Item.associate = (models) =>{ 

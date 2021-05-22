@@ -268,7 +268,7 @@ function New_item() {
             </>
           );
         } else {
-          <Redirect to="/login" />;
+          return <Redirect to="/login" />;
         }
       })()}
     </Fragment>
