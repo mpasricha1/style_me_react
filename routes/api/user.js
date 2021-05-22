@@ -6,15 +6,13 @@ router.get("/test", (req, res) => {
     res.json(true);
 });
 
-router.post('/login', function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-        if (err) { return next(err); }
-        if (!user) { return res.render('catalog'); }
-        req.logIn(user, function(err) {
-            if (err) { return next(err); }
-            return res.json({detail: info});
-        });
-    })(req, res, next);
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  // Sending back a password, even a hashed password, isn't a good idea
+  console.log(req.user);
+  res.json({
+      full_name: req.user.full_name,
+      id: req.user.id
+  });
 });
 
 // router.get("/logout", (req, res ) =>{

@@ -2,12 +2,14 @@ const db = require("../models");
 
 module.exports = {
 	newItem: function(req, res){
+		console.log("Testing it");
 		db.Item.create({
-			UserId: req.user.id,
-			CategoryId: req.body.id,
-			item_name: req.body.item_name,
-			image_link: req.body.image,
+			UserId: req.body.userId,
+			CategoryId: req.body.categoryId,
+			item_name: req.body.itemName,
+			image_link: req.body.url,
 			image_thumbnail: req.body.thumbnail,
+			prediction: req.body.prediction
 		});
 	}
 };
