@@ -2,7 +2,7 @@ use style_me_db_2
 
 DELETE FROM categories;
 ALTER TABLE categories AUTO_INCREMENT = 1;
-INSERT INTO categories(category_name, createdAt, updatedAt) VALUES("T-shit", NOW(), NOW());
+INSERT INTO categories(category_name, createdAt, updatedAt) VALUES("T-shirt", NOW(), NOW());
 INSERT INTO categories(category_name, createdAt, updatedAt) VALUES("Pants", NOW(), NOW()); 
 INSERT INTO categories(category_name, createdAt, updatedAt) VALUES("Pullover", NOW(), NOW()); 
 INSERT INTO categories(category_name, createdAt, updatedAt) VALUES("Dress", NOW(), NOW()); 

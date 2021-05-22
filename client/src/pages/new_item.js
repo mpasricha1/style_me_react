@@ -268,8 +268,7 @@ function New_item() {
             </>
           );
         } else {
-          console.log("is this even working");
-         <Redirect to="/login" />
+          return <Redirect to="/login" />;
         }
       })()}
     </Fragment>

@@ -22,7 +22,7 @@ passport.use(new LocalStrategy(
       }
     }).then( (dbUser) => {
       if(!dbUser || !dbUser.validPassword(password)){
-        return done(null, false, req.flash("message" ,"Invalid username or password."));
+        return done(null, false);
       }
       return done(null, dbUser);
     });

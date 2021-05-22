@@ -2,7 +2,6 @@ const db = require("../models");
 
 module.exports = {
 	newItem: function(req, res){
-		console.log("Testing it");
 		db.Item.create({
 			UserId: req.body.userId,
 			CategoryId: req.body.categoryId,

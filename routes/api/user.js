@@ -7,12 +7,11 @@ router.get("/test", (req, res) => {
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  // Sending back a password, even a hashed password, isn't a good idea
-  console.log(req.user);
-  res.json({
-      full_name: req.user.full_name,
-      id: req.user.id
-  });
+    console.log(req.user)
+    res.json({
+        full_name: req.user.full_name,
+        id: req.user.id
+    });
 });
 
 // router.get("/logout", (req, res ) =>{
@@ -30,7 +29,6 @@ router.get('/auth/google/callback',
   });
 
 router.post("/signup", (req,res) =>{
-	console.log(req.body)
 	db.User.create({
 		full_name: `${req.body.first_name} ${req.body.last_name}`, 
 		first_name: req.body.first_name, 
