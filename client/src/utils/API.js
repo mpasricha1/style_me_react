@@ -35,4 +35,8 @@ export default {
     return axios.get("/api/outfit");
   },
 
+  testUserRouter: function(){
+    return axios.get("/api/user/test");
+  },
+
 };

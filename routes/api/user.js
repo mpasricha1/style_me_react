@@ -7,12 +7,21 @@ router.get("/test", (req, res) => {
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
+<<<<<<< HEAD
     // Sending back a password, even a hashed password, isn't a good idea
     console.log(req.user)
     res.json({
         full_name: req.user.full_name,
         id: req.user.id
     });
+=======
+  // Sending back a password, even a hashed password, isn't a good idea
+  console.log(req.user);
+  res.json({
+      full_name: req.user.full_name,
+      id: req.user.id
+  });
+>>>>>>> 037563befae586f26e32d5eb37a38edad1b54265
 });
 
 // router.get("/logout", (req, res ) =>{
