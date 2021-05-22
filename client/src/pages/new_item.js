@@ -34,6 +34,8 @@ function New_item() {
       .catch((err) => console.log(err));
   }
 
+  console.log(categories)
+
   const beginUpload = (tag) => {
     const uploadOptions = {
       cloudName: "dnx8v0ryu",
