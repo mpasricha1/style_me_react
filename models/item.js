@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) =>{
 			type: DataTypes.STRING(255), 
 			allowNull: false
 		}, 
+		prediction: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false	
+		},
 		type: DataTypes.STRING(255)
 	})
 
