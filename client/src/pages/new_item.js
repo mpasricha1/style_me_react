@@ -29,7 +29,7 @@ function New_item() {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        setCategories([res.data]);
+        setCategories(res.data);
       })
       .catch((err) => console.log(err));
   }

@@ -10,8 +10,7 @@ import API from "../utils/API";
 
 function Signup() {
   // **************** TEST ****************
-  const { id, setId, name, setName, loggedIn, setLoggedIn } =
-    useContext(UserContext);
+  const { id, setId, name, setName, loggedIn, setLoggedIn } = useContext(UserContext);
   const firstNameInput = useRef();
   const lastNameInput = useRef();
   const emailInput = useRef();
