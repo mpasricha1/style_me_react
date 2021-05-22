@@ -32,11 +32,14 @@ export default {
 
   // Gets all outfits
   getOutfits: function() {
-    return axios.get("/api/outfit");
+    return axios.get("/api/outfits");
   },
 
-  testUserRouter: function(){
-    return axios.get("/api/user/test");
+  // Gets all catalogs
+  getCatalogs: function() {
+    return axios.get("/api/catalogs");
   },
+
+
 
 };

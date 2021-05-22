@@ -13,6 +13,21 @@ import API from "../utils/API";
 
 function Catalogs() {
   const [outfits, setOutfits] = useState([]);
+  const [catalogs, setCatalogs] = useState([]);
+   
+
+  useEffect(() => {
+    loadCatalogs();
+  }, []);
+
+  function loadCatalogs() {
+    API.getCatalogs(1)
+      .then((res) => {
+        console.log(res.data);
+                // setCatalogs([...res.data]);
+      })
+      .catch((err) => console.log(err));
+  }
 
   useEffect(() => {
     loadOutfits();
@@ -22,8 +37,7 @@ function Catalogs() {
     API.getOutfits()
       .then((res) => {
         console.log(res);
-        console.log(res.data);
-        setOutfits(res.data);
+                setOutfits([...res.data]);
       })
       .catch((err) => console.log(err));
   }
@@ -95,16 +109,17 @@ function Catalogs() {
 
       <ListContainer className="displayOutfits">
         {outfits.length ? (
-          outfits.map((outfit) => (
-            <ListElement>
-              <ImgTag
-                src={outfit}
-                key={outfit.id}
-                className="diplayOutfits"
-                alt=""
-              />
-            </ListElement>
-          ))
+          console.log("should render outfits")
+          // outfits.map((outfit) => (
+          //   <ListElement>
+          //     <ImgTag
+          //       src={outfit}
+          //       key={outfit.id}
+          //       className="diplayOutfits"
+          //       alt=""
+          //     />
+          //   </ListElement>
+          // ))
         ) : (
           <h3>No outfits available</h3>
         )}

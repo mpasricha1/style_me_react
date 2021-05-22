@@ -25,7 +25,7 @@ function New_item() {
   const [categoryId, setCategoryId] = useState("");
 
   console.log(loggedIn);
-  
+
   useEffect(() => {
     loadCategories();
   }, []);
@@ -40,7 +40,7 @@ function New_item() {
       .catch((err) => console.log(err));
   }
 
-  console.log(categories);
+  //console.log(categories);
 
   const beginUpload = (tag) => {
     const uploadOptions = {
@@ -268,7 +268,8 @@ function New_item() {
             </>
           );
         } else {
-          <Redirect to="/login" />;
+          console.log("is this even working");
+         <Redirect to="/login" />
         }
       })()}
     </Fragment>

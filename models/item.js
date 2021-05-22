@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) =>{
 			type: DataTypes.BOOLEAN,
 			allowNull: false	
 		},
-		type: DataTypes.STRING(255)
 	})
 
 	Item.associate = (models) =>{ 
