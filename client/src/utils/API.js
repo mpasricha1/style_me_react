@@ -17,8 +17,12 @@ export default {
   },
  
   // Testing for login and signup
-  testUserRouter: function(userData){
-    return axios.post(console.log(userData));
+  login: function(userData){
+    return axios.post('/api/user/login', userData);
+  },
+
+  signup: function(userData){
+    return axios.post('/api/user/signup', userData);
   },
 
   // Gets all categories

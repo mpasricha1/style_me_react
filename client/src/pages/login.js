@@ -23,7 +23,7 @@ function Login() {
      password: passwordInput.current.value,
    });
    
-   API.testUserRouter({
+   API.login({
      email: emailInput.current.value,
      password: passwordInput.current.value,
    })
