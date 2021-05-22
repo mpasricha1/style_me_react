@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) =>{
 			type: DataTypes.STRING(255), 
 			allowNull: false
 		}, 
-		type: DataTypes.STRING(255)
+		prediction: {
+			type: DataTypes.BOOLEAN, 
+			allowNull: false
+		}, 
 	})
 
 	Item.associate = (models) =>{ 
