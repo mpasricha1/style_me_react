@@ -36,8 +36,9 @@ export default {
   },
 
   // Gets all catalogs
-  getCatalogs: function() {
-    return axios.get("/api/catalogs");
+  getCatalogs: function(userData) {
+    console.log("USERDATA", userData)
+    return axios.get("/api/catalogs/" + userData);
   },
 
 

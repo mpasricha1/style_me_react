@@ -5,24 +5,13 @@ import UserContext from "../../utils/UserContext";
 import { useHistory } from "react-router-dom";
 
 function LoginForm(props) {
-<<<<<<< HEAD
-  const { id, setId, name, setName, loggedIn, setLoggedIn } =
-    useContext(UserContext);
+  const { id, setId, name, setName, loggedIn, setLoggedIn } = useContext(UserContext);
   // const history = useHistory();
   const emailInput = useRef();
   const passwordInput = useRef();
 
-  console.log(loggedIn);
-
-=======
-  const { id, setId, name, setName, loggedIn, setLoggedIn } = useContext(UserContext);
-  const history = useHistory();
-  const emailInput = useRef();
-  const passwordInput = useRef();
-
   console.log(loggedIn)
-  console.log(history)
->>>>>>> 3ab73d282a69c511243ec7d0beab67a524599c48
+  // console.log(history)
 
   let extraProps = {};
   if (props.className) {
@@ -51,28 +40,13 @@ function LoginForm(props) {
       email: emailInput.current.value,
       password: passwordInput.current.value,
     })
-<<<<<<< HEAD
-      .then((data) => {
-        // console.log(data);
-        // console.log(data.data.full_name);
-        // console.log(data.data.id);
-=======
       .then(data => {
         console.log(data.data);
->>>>>>> 3ab73d282a69c511243ec7d0beab67a524599c48
 
         setId(data.data.id);
         setName(data.data.full_name);
         setLoggedIn(true);
-<<<<<<< HEAD
         // history.push("/");
-        
-        console.log(id);
-        console.log(name);
-        console.log(loggedIn);
-=======
-        history.push("/");
->>>>>>> 3ab73d282a69c511243ec7d0beab67a524599c48
       })
       .catch((err) => {
         console.log(err);

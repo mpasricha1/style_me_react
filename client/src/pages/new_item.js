@@ -33,14 +33,14 @@ function New_item() {
   function loadCategories() {
     API.getCategories()
       .then((res) => {
-        // console.log(res);
-        // console.log(res.data);
+        console.log(res);
+        console.log(res.data);
         setCategories([...res.data]);
       })
       .catch((err) => console.log(err));
   }
 
-  //console.log(categories);
+  console.log(categories);
 
   const beginUpload = (tag) => {
     const uploadOptions = {
@@ -137,7 +137,7 @@ function New_item() {
   return (
     <Fragment>
       {(() => {
-        if (loggedIn) {
+        if (!loggedIn) {
           return (
             <>
               <CloudinaryContext cloudName="dnx8v0ryu">

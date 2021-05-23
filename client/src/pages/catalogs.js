@@ -14,7 +14,7 @@ import API from "../utils/API";
 function Catalogs() {
   const [outfits, setOutfits] = useState([]);
   const [catalogs, setCatalogs] = useState([]);
-   
+  const [catalogId, setCatalogId] = useState("");
 
   useEffect(() => {
     loadCatalogs();
@@ -23,28 +23,46 @@ function Catalogs() {
   function loadCatalogs() {
     API.getCatalogs(1)
       .then((res) => {
-        console.log(res.data);
-                // setCatalogs([...res.data]);
+        console.log([...res.data]);
+        setCatalogs([...res.data]);
       })
       .catch((err) => console.log(err));
   }
 
-  useEffect(() => {
-    loadOutfits();
-  }, []);
+  // function catalogID(){
+  // var catalogID = catalog.filter(
+  //   (catalog) => catalog.catalog === type
+  // );
+  // console.log(catalogID);
+  // setCategoryId(catalogID);
 
-  function loadOutfits() {
-    API.getOutfits()
-      .then((res) => {
-        console.log(res);
-                setOutfits([...res.data]);
-      })
-      .catch((err) => console.log(err));
-  }
+  // }
+
+  // useEffect(() => {
+  //   loadOutfits();
+  // }, []);
+
+  // function loadOutfits() {
+  //   API.getOutfits()
+  //     .then((res) => {
+  //       console.log(res);
+  //               setOutfits([...res.data]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
   function handleOutfits(event) {
-    console.log(event.target);
-    document.querySelector(".displayOutfits").style.display = "block";
+   // console.log(event.target);
+    var element = event.target;
+    if (
+      element.matches(".ulElement") === true ||
+      element.matches(".liElement") === true ||
+      element.matches(".imgElement") === true ||
+      element.matches(".headingEl") === true
+    ) {
+      var catalogDataId = event.target.dataset.id;
+      console.log(catalogDataId);
+    }
   }
 
   return (
@@ -65,61 +83,45 @@ function Catalogs() {
         </ReusableBtn>
       </div>
 
-      <ListContainer style={{ display: "flex" }}>
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Spring
-          <ListElement className="liElement">
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
-
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Summer
-          <ListElement>
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
-
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Fall
-          <ListElement>
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
-
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Winter
-          <ListElement>
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
+      <ListContainer style={{ display: "flex" }} onClick={handleOutfits}>
+        {catalogs.map((catalog) => (
+          <UnorderedList
+            key={catalog.id}
+            className="ulElement"
+            value={catalog.catalog_name}
+          >
+            <h3 data-id={catalog.id} className="headingEl">
+              {catalog.catalog_name}
+            </h3>
+            <ListElement data-id={catalog.id} className="liElement">
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+            </ListElement>
+          </UnorderedList>
+        ))}
       </ListContainer>
 
       <ListContainer className="displayOutfits">
         {outfits.length ? (
           console.log("should render outfits")
-          // outfits.map((outfit) => (
-          //   <ListElement>
-          //     <ImgTag
-          //       src={outfit}
-          //       key={outfit.id}
-          //       className="diplayOutfits"
-          //       alt=""
-          //     />
-          //   </ListElement>
-          // ))
         ) : (
           <h3>No outfits available</h3>
         )}
