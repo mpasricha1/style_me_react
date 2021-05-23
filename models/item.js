@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) =>{
 			allowNull: false
 		}, 
 		prediction: {
-			type: DataTypes.BOOLEAN, 
-			allowNull: false
-		}
+			type: DataTypes.BOOLEAN,
+			allowNull: false	
+		},
 	})
 
 	Item.associate = (models) =>{ 

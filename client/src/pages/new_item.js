@@ -25,7 +25,7 @@ function New_item() {
   const [categoryId, setCategoryId] = useState("");
 
   console.log(loggedIn);
-  
+
   useEffect(() => {
     loadCategories();
   }, []);
@@ -33,8 +33,8 @@ function New_item() {
   function loadCategories() {
     API.getCategories()
       .then((res) => {
-        // console.log(res);
-        // console.log(res.data);
+        console.log(res);
+        console.log(res.data);
         setCategories([...res.data]);
       })
       .catch((err) => console.log(err));
@@ -137,7 +137,7 @@ function New_item() {
   return (
     <Fragment>
       {(() => {
-        if (loggedIn) {
+        if (!loggedIn) {
           return (
             <>
               <CloudinaryContext cloudName="dnx8v0ryu">
