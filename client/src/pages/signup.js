@@ -10,8 +10,7 @@ import API from "../utils/API";
 
 function Signup() {
   // **************** TEST ****************
-  const { id, setId, name, setName, loggedIn, setLoggedIn } =
-    useContext(UserContext);
+  const { id, setId, name, setName, loggedIn, setLoggedIn } = useContext(UserContext);
   const firstNameInput = useRef();
   const lastNameInput = useRef();
   const emailInput = useRef();
@@ -26,8 +25,9 @@ function Signup() {
       password: passwordInput.current.value,
     });
     
-    API.testUserRouter({
-      name: firstNameInput.current.value + " " + lastNameInput.current.value,
+    API.signup({
+      first_name: firstNameInput.current.value,
+      last_name: lastNameInput.current.value,
       email: emailInput.current.value,
       password: passwordInput.current.value,
     })

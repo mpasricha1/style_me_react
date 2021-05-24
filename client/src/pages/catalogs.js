@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { ReusableBtn } from "../components/Buttons";
 import {
@@ -8,15 +8,61 @@ import {
   ImgTag,
 } from "../components/ulElements";
 import TemplateImage from "../images/sampleCatalog.png";
-
 import Footer from "../components/Footer";
+import API from "../utils/API";
 
 function Catalogs() {
-  // const [outfits, setOutfits] = useState();
+  const [outfits, setOutfits] = useState([]);
+  const [catalogs, setCatalogs] = useState([]);
+  const [catalogId, setCatalogId] = useState("");
+
+  useEffect(() => {
+    loadCatalogs();
+  }, []);
+
+  function loadCatalogs() {
+    API.getCatalogs(1)
+      .then((res) => {
+        console.log([...res.data]);
+        setCatalogs([...res.data]);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  // function catalogID(){
+  // var catalogID = catalog.filter(
+  //   (catalog) => catalog.catalog === type
+  // );
+  // console.log(catalogID);
+  // setCategoryId(catalogID);
+
+  // }
+
+  // useEffect(() => {
+  //   loadOutfits();
+  // }, []);
+
+  // function loadOutfits() {
+  //   API.getOutfits()
+  //     .then((res) => {
+  //       console.log(res);
+  //               setOutfits([...res.data]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
   function handleOutfits(event) {
-    console.log(event.target);
-   
+   // console.log(event.target);
+    var element = event.target;
+    if (
+      element.matches(".ulElement") === true ||
+      element.matches(".liElement") === true ||
+      element.matches(".imgElement") === true ||
+      element.matches(".headingEl") === true
+    ) {
+      var catalogDataId = event.target.dataset.id;
+      console.log(catalogDataId);
+    }
   }
 
   return (
@@ -24,7 +70,7 @@ function Catalogs() {
       <Header />
       <div className="topButtons">
         <ReusableBtn
-          to="/newitem"
+          to="/item"
           className="newItemBtn btn btn-outline-secondary"
         >
           Add New Item
@@ -37,53 +83,50 @@ function Catalogs() {
         </ReusableBtn>
       </div>
 
-      <ListContainer style={{ display: "flex" }}>
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Spring
-          <ListElement className="liElement">
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
-
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Summer
-          <ListElement>
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
-
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Fall
-          <ListElement>
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
-
-        <UnorderedList className="ulElement" onClick={handleOutfits}>
-          Winter
-          <ListElement>
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-            <ImgTag src={TemplateImage} className="imgElement" />
-          </ListElement>
-        </UnorderedList>
+      <ListContainer style={{ display: "flex" }} onClick={handleOutfits}>
+        {catalogs.map((catalog) => (
+          <UnorderedList
+            key={catalog.id}
+            className="ulElement"
+            value={catalog.catalog_name}
+          >
+            <h3 data-id={catalog.id} className="headingEl">
+              {catalog.catalog_name}
+            </h3>
+            <ListElement data-id={catalog.id} className="liElement">
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+              <ImgTag
+                data-id={catalog.id}
+                src={TemplateImage}
+                className="imgElement"
+              />
+            </ListElement>
+          </UnorderedList>
+        ))}
       </ListContainer>
 
-      <ListContainer>"outfits will be display here"
-        <ListElement>
-          <ImgTag src="" className="diplayOutfits"/>
-        </ListElement>
+      <ListContainer className="displayOutfits">
+        {outfits.length ? (
+          console.log("should render outfits")
+        ) : (
+          <h3>No outfits available</h3>
+        )}
       </ListContainer>
+
       <Footer />
     </>
   );

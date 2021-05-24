@@ -301,8 +301,8 @@
   width: 20%;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-right: 30px;
-  margin-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 .inputSearch {
   width: 100%;
@@ -310,7 +310,6 @@
   text-align: left;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
@@ -319,9 +318,8 @@
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 .categDropList {
   width: 100%;
   margin-top: 5px;
@@ -331,12 +329,13 @@
 .form-search {
   position: relative;
   top:-28px;
+  right: -39px;
   background-color: whitesmoke;
   display: inline-block;
   width: 70%;
   margin-top: 3px;
-  margin-right: 0px;
-  margin-left:100px;
+  margin-right: auto;
+  margin-left: auto;
   margin-bottom: 50px;
   padding-top: 10px;
   padding-bottom: 2px;
@@ -381,3 +380,25 @@
 }
 
 
+
+.displayOutfits {
+  display: none;
+  margin-bottom: 25px;
+}
+
+.input_field, .full-page-signup {
+  width:100% !important;
+}
+
+.firstInputBox {
+  margin-top: 25px !important;
+}
+
+.form-control, .inputBox {
+  width: 75% !important;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+    border-width: 1px;
+    border-color: lightgray;
+}

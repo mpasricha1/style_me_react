@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { ReusableBtn } from "../components/Buttons";
 import { Select } from "../components/DropdownLists";
-
+import API from "../utils/API";
 function Build_outfit() {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    loadCategories();
+  }, []);
+  function loadCategories() {
+    API.getCategories().then((res) => {
+      // console.log(res.data);
+      setCategories([...res.data]);
+    });
+  }
+  // console.log(categories);
+
+  function handleDropdownOptions(){
+    console.log('item should be render here');
+  }
   return (
     <>
       <Header />
@@ -27,30 +42,30 @@ function Build_outfit() {
         </ReusableBtn>
       </div>
 
-
       <div container className="categoriesDropList">
-
         <input
           type="search"
           className="inputSearch btn btn-outline-secondary"
           placeholder="Search Outfits..."
         />
 
-
-        <Select className="categDropList btn btn-outline-secondary">
-          Categories
-       </Select>
+        <Select
+        onChange={handleDropdownOptions}
+          className="categDropList btn btn-outline-secondary"
+          placeholder="Categories"
+        >
+          {categories.map((category) => (
+            <option key={category.id} value={category.category_name}>
+              {category.category_name}
+            </option>
+          ))}
+        </Select>
       </div>
-
-
-
-
-
 
       <div container className="form-search">
         <Select className="catalogsDropList btn btn-outline-secondary">
           CATALOGS
-          </Select>
+        </Select>
 
         <input
           type="search"
@@ -60,10 +75,8 @@ function Build_outfit() {
 
         <button class="saveBtn btn btn-outline-secondary" type="submit">
           Save
-          </button>
+        </button>
       </div>
-
-
     </>
   );
 }

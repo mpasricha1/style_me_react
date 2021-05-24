@@ -13,6 +13,6 @@ export function ListElement(props) {
   return <li className="liElement" {...props}>
   </li>;
 }
-export function ImgTag(props) {
+export function  ImgTag(props) {
     return <img className="imgTag" alt="" {...props}/>;
   }
