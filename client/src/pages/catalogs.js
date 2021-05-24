@@ -23,36 +23,30 @@ function Catalogs() {
   function loadCatalogs() {
     API.getCatalogs(1)
       .then((res) => {
-        console.log([...res.data]);
+        // console.log([...res.data]);
         setCatalogs([...res.data]);
       })
       .catch((err) => console.log(err));
   }
 
-  // function catalogID(){
-  // var catalogID = catalog.filter(
-  //   (catalog) => catalog.catalog === type
-  // );
-  // console.log(catalogID);
-  // setCategoryId(catalogID);
+  // console.log(catalogs);
 
-  // }
+  useEffect(() => {
+    loadOutfits();
+  }, []);
 
-  // useEffect(() => {
-  //   loadOutfits();
-  // }, []);
-
-  // function loadOutfits() {
-  //   API.getOutfits()
-  //     .then((res) => {
-  //       console.log(res);
-  //               setOutfits([...res.data]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+  function loadOutfits() {
+    API.getOutfits()
+      .then((res) => {
+        console.log(res);
+        // setOutfits([...res.data]);
+      })
+      .catch((err) => console.log(err));
+  }
 
   function handleOutfits(event) {
-   // console.log(event.target);
+    event.preventDefault();
+    // console.log(event.target);
     var element = event.target;
     if (
       element.matches(".ulElement") === true ||
@@ -60,10 +54,11 @@ function Catalogs() {
       element.matches(".imgElement") === true ||
       element.matches(".headingEl") === true
     ) {
-      var catalogDataId = event.target.dataset.id;
-      console.log(catalogDataId);
+      setCatalogId(element.dataset.id);
     }
   }
+
+  console.log(catalogId);
 
   return (
     <>

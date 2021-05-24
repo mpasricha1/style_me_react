@@ -32,7 +32,7 @@ export default {
 
   // Gets all outfits
   getOutfits: function() {
-    return axios.get("/api/outfits");
+    return axios.get("/api/outfit");
   },
 
   // Gets all catalogs
