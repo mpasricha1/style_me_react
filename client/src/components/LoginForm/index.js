@@ -6,12 +6,12 @@ import { useHistory } from "react-router-dom";
 
 function LoginForm(props) {
   const { id, setId, name, setName, loggedIn, setLoggedIn } = useContext(UserContext);
-  const history = useHistory();
+  // const history = useHistory();
   const emailInput = useRef();
   const passwordInput = useRef();
 
   console.log(loggedIn)
-  console.log(history)
+  // console.log(history)
 
   let extraProps = {};
   if (props.className) {
@@ -29,7 +29,7 @@ function LoginForm(props) {
 
   const handleSubmit = (event) => {
     // if the user hits enter or hits the button, this function will fire
-    event.preventDefault();
+     event.preventDefault();
     console.log("submit happened");
     console.log({
       email: emailInput.current.value,
@@ -46,7 +46,7 @@ function LoginForm(props) {
         setId(data.data.id);
         setName(data.data.full_name);
         setLoggedIn(true);
-        history.push("/");
+        // history.push("/");
       })
       .catch((err) => {
         console.log(err);

@@ -125,7 +125,7 @@ function SignUpForm(props) {
             </form>
           );
         } else {
-          return <h3>"zup</h3>;
+          return <h3>""</h3>;
         }
       })()}
     </Fragment>
