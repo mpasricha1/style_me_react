@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { ReusableBtn } from "../components/Buttons";
 import { Select } from "../components/DropdownLists";
@@ -6,6 +7,7 @@ import API from "../utils/API";
 function Build_outfit() {
   const [categories, setCategories] = useState([]);
   const [catalogs, setCatalogs] = useState([]);
+  const [allItems, setAllItems] = useState([]);
 
   // GET CATEGORIES
   useEffect(() => {
@@ -19,7 +21,7 @@ function Build_outfit() {
       })
       .catch((err) => console.log(err));
   }
-  //  console.log(categories);
+  //console.log(categories);
 
   // GET CATALOGS
   useEffect(() => {
@@ -35,11 +37,29 @@ function Build_outfit() {
       .catch((err) => console.log(err));
   }
 
-  console.log(catalogs);
+  //console.log(catalogs);
 
-  function handleDropdownOptions() {
-    console.log("item should be render here");
+  // Get all items by category
+  // useEffect(() => {
+  //   loadAllItems();
+  // }, []);
+
+  // function loadAllItems() {
+  //   API.getAllItems( )
+  //     .then((res) => {
+  //        console.log(res.data);
+  //       setAllItems([...res.data]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
+
+
+  function handleDropdownOptions(event) {
+    event.preventDefault();
+   var element = event.target;
+  console.log(element);
   }
+
   return (
     <>
       <Header />
@@ -69,14 +89,14 @@ function Build_outfit() {
           className="inputSearch btn btn-outline-secondary"
           placeholder="Search Outfits..."
         />
-
+  
         <Select
-          onChange={handleDropdownOptions}
+          onClick={handleDropdownOptions}
           className="categDropList btn btn-outline-secondary"
-          placeholder="Categories"
+          name="categories"
         >
           {categories.map((category) => (
-            <option key={category.id} value={category.category_name}>
+            <option key={category.id} className="option" data-id={category.id} value={category.category_name}>
               {category.category_name}
             </option>
           ))}
@@ -85,14 +105,12 @@ function Build_outfit() {
 
       <div className="form-search">
         <Select className="catalogsDropList btn btn-outline-secondary">
-          {catalogs.map((catalog) => {
-            {
-              console.log(catalog.id, catalog.catalog_name);
-            }
+          {catalogs.map((catalog) => (
+            // {console.log(catalog.id, catalog.catalog_name)}
             <option key={catalog.id} value={catalog.catalog_name}>
               {catalog.catalog_name}
-            </option>;
-          })}
+            </option>
+          ))}
         </Select>
 
         <input
