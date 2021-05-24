@@ -5,24 +5,45 @@ import { Select } from "../components/DropdownLists";
 import API from "../utils/API";
 function Build_outfit() {
   const [categories, setCategories] = useState([]);
+  const [catalogs, setCatalogs] = useState([]);
+
+  // GET CATEGORIES
   useEffect(() => {
     loadCategories();
   }, []);
   function loadCategories() {
-    API.getCategories().then((res) => {
-      // console.log(res.data);
-      setCategories([...res.data]);
-    });
+    API.getCategories()
+      .then((res) => {
+        // console.log(res.data);
+        setCategories([...res.data]);
+      })
+      .catch((err) => console.log(err));
   }
-  // console.log(categories);
+  //  console.log(categories);
 
-  function handleDropdownOptions(){
-    console.log('item should be render here');
+  // GET CATALOGS
+  useEffect(() => {
+    loadCatalogs();
+  }, []);
+
+  function loadCatalogs() {
+    API.getCatalogs(1)
+      .then((res) => {
+        // console.log([...res.data]);
+        setCatalogs([...res.data]);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  console.log(catalogs);
+
+  function handleDropdownOptions() {
+    console.log("item should be render here");
   }
   return (
     <>
       <Header />
-      <div container className="buildOutfit">
+      <div className="buildOutfit">
         <h2>Build Outfit</h2>
         <h3>"Find your best look"</h3>
       </div>
@@ -42,7 +63,7 @@ function Build_outfit() {
         </ReusableBtn>
       </div>
 
-      <div container className="categoriesDropList">
+      <div className="categoriesDropList">
         <input
           type="search"
           className="inputSearch btn btn-outline-secondary"
@@ -50,7 +71,7 @@ function Build_outfit() {
         />
 
         <Select
-        onChange={handleDropdownOptions}
+          onChange={handleDropdownOptions}
           className="categDropList btn btn-outline-secondary"
           placeholder="Categories"
         >
@@ -62,9 +83,16 @@ function Build_outfit() {
         </Select>
       </div>
 
-      <div container className="form-search">
+      <div className="form-search">
         <Select className="catalogsDropList btn btn-outline-secondary">
-          CATALOGS
+          {catalogs.map((catalog) => {
+            {
+              console.log(catalog.id, catalog.catalog_name);
+            }
+            <option key={catalog.id} value={catalog.catalog_name}>
+              {catalog.catalog_name}
+            </option>;
+          })}
         </Select>
 
         <input
@@ -73,7 +101,7 @@ function Build_outfit() {
           placeholder="Outfit Name"
         />
 
-        <button class="saveBtn btn btn-outline-secondary" type="submit">
+        <button className="saveBtn btn btn-outline-secondary" type="submit">
           Save
         </button>
       </div>

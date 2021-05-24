@@ -323,12 +323,11 @@
 .categDropList {
   width: 100%;
   margin-top: 5px;
-
 }
 
 .form-search {
   position: relative;
-  top:-28px;
+  top: -28px;
   right: -39px;
   background-color: whitesmoke;
   display: inline-block;
@@ -379,26 +378,26 @@
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-
-
 .displayOutfits {
   display: none;
   margin-bottom: 25px;
 }
 
-.input_field, .full-page-signup {
-  width:100% !important;
+.input_field,
+.full-page-signup {
+  width: 100% !important;
 }
 
 .firstInputBox {
   margin-top: 25px !important;
 }
 
-.form-control, .inputBox {
+.form-control,
+.inputBox {
   width: 75% !important;
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
-    border-width: 1px;
-    border-color: lightgray;
+  border-width: 1px;
+  border-color: lightgray;
 }
