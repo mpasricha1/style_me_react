@@ -10,5 +10,13 @@ module.exports = {
 			image_thumbnail: req.body.thumbnail,
 			prediction: req.body.prediction
 		});
+	}, 
+	getAllItemsbyCat: function(req, res){ 
+		db.Item.findAll({
+			raw: true,
+			where: { CategoryId: cat_id, userId: user_id }
+		}).then(items => {
+			res.json(items)
+		});
 	}
 };
