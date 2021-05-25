@@ -4,7 +4,7 @@ const itemController = require("../../controllers/itemController");
 router.route('/')
 	.post(itemController.newItem)
 
-router.route("/:cat_id")
+router.route("/:id/:userId")
 	.get(itemController.getAllItemsbyCat)
 
 module.exports = router; 
