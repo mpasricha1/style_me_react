@@ -25,7 +25,7 @@ module.exports = {
 	addOutfit: function(req, res){
 		db.Outfit.create({
 			outfit_name: outfit_name
-		})
+		}).then(outfit => res.json(outfit))
 	}, 
 	addOutfitItem: function( req, res){
 		db.Outfit_item.findOrCreate({
