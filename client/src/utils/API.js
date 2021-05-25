@@ -43,8 +43,20 @@ export default {
 
    // Gets all items
    getAllItems: function(userData, userId) {
-    console.log("USERDATA", userData)
+    console.log("USERDATA", userData, userId)
     return axios.get("/api/item/" + userData + "/" + userId);
+  },
+
+  // Send outfit data
+  saveOutfit: function(userData) {
+    console.log("SAVE OUTFIT", userData)
+    return axios.post("/api/outfits", userData)
+  },
+
+  // Send catalog data
+  saveCatalogItem: function(userData) {
+    console.log("SAVe catalog item", userData)
+    return axios.post("/api/catalogs/item", userData)
   },
 
 
