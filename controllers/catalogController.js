@@ -11,5 +11,11 @@ module.exports = {
 		}).then(catalogs => {
 			res.json(catalogs);
 		})
+	}, 
+	insertCatItem: function(req, res){
+		db.Catalog_item.create({
+			CatalogId: catalog_id, 
+			OutfitId: outfit_id
+		})
 	}
 }
