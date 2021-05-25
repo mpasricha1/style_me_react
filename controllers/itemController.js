@@ -12,9 +12,10 @@ module.exports = {
 		});
 	}, 
 	getAllItemsbyCat: function(req, res){ 
+		console.log("THIS IS IT", req.params);
 		db.Item.findAll({
 			raw: true,
-			where: { CategoryId: cat_id, userId: user_id }
+			where: { CategoryId: req.params.id, userId: req.params.userId }
 		}).then(items => {
 			res.json(items)
 		});
