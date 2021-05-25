@@ -41,6 +41,12 @@ export default {
     return axios.get("/api/catalogs/" + userData);
   },
 
+   // Gets all items
+   getAllItems: function(userData, userId) {
+    console.log("USERDATA", userData)
+    return axios.get("/api/item/" + userData + "/" + userId);
+  },
+
 
 
 };

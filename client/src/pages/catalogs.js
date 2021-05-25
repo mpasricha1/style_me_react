@@ -29,7 +29,7 @@ function Catalogs() {
       .catch((err) => console.log(err));
   }
 
-  // console.log(catalogs);
+  //console.log(catalogs);
 
   useEffect(() => {
     loadOutfits();
