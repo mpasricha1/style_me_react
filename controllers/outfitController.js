@@ -23,8 +23,9 @@ module.exports = {
 		})
 	},
 	addOutfit: function(req, res){
+		console.log("OUTFIT", req.body)
 		db.Outfit.create({
-			outfit_name: outfit_name
+			outfit_name: req.body.outfitName
 		}).then(outfit => res.json(outfit))
 	}, 
 	addOutfitItem: function( req, res){

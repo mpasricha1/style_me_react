@@ -13,9 +13,10 @@ module.exports = {
 		})
 	}, 
 	insertCatItem: function(req, res){
+		console.log("INSERT into CATALOG", req.body)
 		db.Catalog_item.create({
-			CatalogId: catalog_id, 
-			OutfitId: outfit_id
+			CatalogId: req.body.catalogId, 
+			OutfitId: req.body.outfitId
 		})
 	}
 }
