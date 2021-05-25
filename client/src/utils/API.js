@@ -16,6 +16,11 @@ export default {
     return axios.post("/api/newitem", data);
   },
 
+  saveOutfit: function (data) {
+    console.log(data);
+    return axios.post("/api/buildoutfit", data);
+  },
+  
   // ********** test UserRouter ****
  
   testUserRouter: function(userData){
