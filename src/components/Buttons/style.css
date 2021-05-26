@@ -1,0 +1,23 @@
+.landing_btn_container {
+  display: inline;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.reusableButton {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reusableBtn:hover {
+  background-color: #f5df4d;
+  color: #6c757d;
+}
+
+.btn {
+  padding-top: 11px !important;
+}
