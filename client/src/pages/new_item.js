@@ -24,7 +24,7 @@ function New_item() {
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState("");
 
-  console.log(loggedIn);
+ // console.log(loggedIn);
 
   useEffect(() => {
     loadCategories();
@@ -33,14 +33,14 @@ function New_item() {
   function loadCategories() {
     API.getCategories()
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         setCategories([...res.data]);
       })
       .catch((err) => console.log(err));
   }
 
-  console.log(categories);
+  //console.log(categories);
 
   const beginUpload = (tag) => {
     const uploadOptions = {
@@ -88,6 +88,8 @@ function New_item() {
       var categoryID = categories.filter(
         (category) => category.category_name === type
       );
+
+      console.log(categoryID);
       console.log(categoryID[0].id);
       setCategoryId(categoryID[0].id);
 

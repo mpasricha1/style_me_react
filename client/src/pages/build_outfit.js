@@ -5,6 +5,7 @@ import { ReusableBtn } from "../components/Buttons";
 import { Select } from "../components/DropdownLists";
 import API from "../utils/API";
 import { ImgTag } from "../components/ulElements";
+import { fireEvent } from "@testing-library/dom";
 
 function Build_outfit() {
   const [categories, setCategories] = useState([]);
@@ -15,6 +16,7 @@ function Build_outfit() {
   const [outfitName, setOutfitName] = useState("");
   const [outfitId, setOutfitId] = useState("");
   const [catalogId, setCatalogId] = useState("");
+  // const [arrayOfItems, setArrayOfItems] = useState([]);
 
   // GET CATEGORIES
   useEffect(() => {
@@ -88,7 +90,7 @@ function Build_outfit() {
     setOutfit(outfitArr);
   }
   // WILL CONTAIN THE DATA NEED TO PUT AND RENDER ITEMS TOGETHER TO FORM AN OUTFIT
-  // console.log(outfit);
+  //console.log(outfit);
 
   function handleInputChange(event) {
     const { value } = event.target;
@@ -104,18 +106,25 @@ function Build_outfit() {
     let response = await API.saveOutfit({
       outfitName: outfitName,
     });
-
+    
     setOutfitId(response.data.id);
     console.log(outfitId);
+
+    console.log(outfit);
+
+    for (const item of outfit) {
+      console.log(outfit);
+      await API.addItems({
+        outfitId: response.data.id,
+        currentId: item.id,
+      });
+    }
+
     await API.saveCatalogItem({
       catalogId: catalogId,
-      outfitId: outfitId,
+      outfitId: response.data.id,
     });
-
-    console.log(outfit);
-    outfit.map((outfitItem) => console.log(outfitItem));
-
-    console.log(outfit);
+ 
   }
 
   function handleCatalogChange(event) {
@@ -195,7 +204,7 @@ function Build_outfit() {
         </div>
 
         <div className="col-md-8">
-          <div className="form-search" onClick={handleSubmit}>
+          <div className="form-search">
             <Select
               onChange={handleCatalogChange}
               className="catalogsDropList btn btn-outline-secondary"

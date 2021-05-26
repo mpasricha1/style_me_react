@@ -59,6 +59,12 @@ export default {
     return axios.post("/api/catalogs/item", userData)
   },
 
+   // Send catalog data
+   addItems: function(userData) {
+    console.log("ADD ITEMS", userData)
+    return axios.post("/api/outfits/item", userData)
+  },
+
 
 
 };
