@@ -29,14 +29,15 @@ module.exports = {
 		}).then(outfit => res.json(outfit))
 	}, 
 	addOutfitItem: function( req, res){
+		console.log("NEW OUTFIT", req.body);
 		db.Outfit_item.findOrCreate({
 			defaults: {
-				ItemId: item.id, 
-				OutfitId: outfit_id
+				ItemId: req.body.currentId, 
+				OutfitId: req.body.outfitId
 			}, 
 			where: {
-				itemID: item.id, 
-				OutfitId: outfit_id
+				itemID: req.body.currentId, 
+				OutfitId: req.body.outfitId
 			}	
 		})
 	}
