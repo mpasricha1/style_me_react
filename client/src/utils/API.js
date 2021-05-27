@@ -6,7 +6,7 @@ export default {
     console.log("URL", url);
 
     return axios
-      .post("http://3.141.18.55/api/predict", { url: url })
+      .post("https://3.141.18.55/api/predict", { url: url })
       .then((data) => data)
       .catch((err) => console.log(err));
   },
